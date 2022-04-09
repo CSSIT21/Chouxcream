@@ -1,0 +1,45 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.buildlog/
+.history
+.svn/
+
+# IntelliJ IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VSCode IDE
+.vscode/
+
+# Atom IDE
+.atom/
+
+# Flutter/Dart/Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web
+lib/generated_plugin_registrant.dart
+
+# Symbolication
+app.*.symbols
+
+# Obfuscation
+app.*.map.json
+
+# Android Studio build artifact
+/android/app/debug
+/android/app/profile
+/android/app/release
