@@ -41,7 +41,7 @@ class Content extends StatelessWidget {
                     ),
                     style: ButtonStyle(
                         overlayColor: MaterialStateProperty.all(Colors.white.withOpacity(0.2)),
-                        shape: MaterialStateProperty.all(ThemeConstant.philBorderShape),
+                        shape: MaterialStateProperty.all(ThemeConstant.pillBorderShape),
                         side: MaterialStateProperty.all(
                             const BorderSide(color: Colors.white, width: 1.2, style: BorderStyle.solid))),
                     onPressed: () {

@@ -17,11 +17,11 @@ class ThemeConstant {
   static MaterialColor swatchAccentDark = color.createMaterialColor(colorAccentDark);
 
   // Shape
-  static RoundedRectangleBorder philBorderShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(99999.0));
+  static RoundedRectangleBorder pillBorderShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(99999.0));
 
   // Theme data
   static ThemeData theme = ThemeData(
     primarySwatch: swatchPrimary,
-    buttonTheme: ButtonThemeData(shape: philBorderShape),
+    buttonTheme: ButtonThemeData(shape: pillBorderShape),
   );
 }
