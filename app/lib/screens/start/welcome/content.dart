@@ -1,4 +1,5 @@
 import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/screens/start/login/index.dart';
 import 'package:flutter/material.dart';
 
 class Content extends StatelessWidget {
@@ -43,7 +44,9 @@ class Content extends StatelessWidget {
                         shape: MaterialStateProperty.all(ThemeConstant.philBorderShape),
                         side: MaterialStateProperty.all(
                             const BorderSide(color: Colors.white, width: 1.2, style: BorderStyle.solid))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                    },
                   ))
             ]));
   }

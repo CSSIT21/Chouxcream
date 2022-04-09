@@ -29,7 +29,7 @@ class Background extends StatelessWidget {
         particles: 8,
         color: ThemeConstant.colorAccentDark.withOpacity(0.3),
         blur: 0.3,
-        size: 1,
+        size: 1.2,
         speed: 0.6,
         offset: 0,
         blendMode: BlendMode.plus,
@@ -38,7 +38,7 @@ class Background extends StatelessWidget {
         variation2: 0.3,
         variation3: 0,
         rotation: 0,
-        fps: 10,
+        fps: 15,
       ),
     );
   }

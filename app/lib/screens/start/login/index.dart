@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:chouxcream_app/screens/start/login/form.dart';
+import 'package:flutter/material.dart' hide Form;
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: AppBar(title: Text("Login")),
         body: Column(
-          children: const [Text("Hello")],
+          children: const [Text("Hello"), Form()],
         ));
   }
 }
