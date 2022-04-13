@@ -1,0 +1,27 @@
+# Environment type:
+#  - 0 = development
+#  - 1 = production
+environment: 0
+
+# Log level:
+#  - See https://pkg.go.dev/github.com/sirupsen/logrus@v1.8.1#Level
+loglevel: 6
+
+# HTTP binding address
+address: :3000
+
+# HTTP Server header
+serverheader: chouxcream-backend1
+
+# Allowed cross-origin addresses (array)
+cors:
+  - http://localhost:8080
+
+# JWT secret
+jwtsecret: 08h4CrYdc8CkXDOH0WCYu0gWSN9wVyLV
+
+# MySQL server address
+mysqldsn: user:password@tcp(127.0.0.1:3306)/database?charset=utf8mb4&parseTime=true&loc=local
+
+# Auto migrate MySQL schema
+mysqlmigrate: true

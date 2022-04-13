@@ -1,0 +1,20 @@
+# Local files/directories
+/local
+
+# Swagger generates
+/swagger/*
+!/swagger/index.go
+
+# Config file
+/config.yaml
+
+# Log file
+/*.log
+
+# Static directory
+/static
+
+# IDE files
+.idea/
+.vscode/
+.atom/
