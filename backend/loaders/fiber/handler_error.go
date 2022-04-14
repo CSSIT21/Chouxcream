@@ -6,7 +6,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 
-	"noty-backend/types/responder"
+	"chouxcream-backend/types/responder"
 )
 
 func errorHandler(ctx *fiber.Ctx, err error) error {

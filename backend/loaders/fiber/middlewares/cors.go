@@ -4,7 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 
-	"noty-backend/utils/config"
+	"chouxcream-backend/utils/config"
 )
 
 var Cors = func() fiber.Handler {

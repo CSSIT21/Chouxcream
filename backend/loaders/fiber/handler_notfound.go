@@ -3,7 +3,7 @@ package fiber
 import (
 	"github.com/gofiber/fiber/v2"
 
-	"noty-backend/types/responder"
+	"chouxcream-backend/types/responder"
 )
 
 func notfoundHandler(ctx *fiber.Ctx) error {

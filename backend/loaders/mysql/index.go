@@ -10,8 +10,9 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"backend/utils/config"
-	loggerUtils "backend/utils/logger"
+	"chouxcream-backend/utils/config"
+
+	loggerUtils "chouxcream-backend/utils/logger"
 )
 
 var Gorm *gorm.DB

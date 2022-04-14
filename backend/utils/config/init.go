@@ -6,7 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 
-	"noty-backend/utils/logger"
+	"chouxcream-backend/utils/logger"
 )
 
 var C = new(config)

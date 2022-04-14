@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 
-	"noty-backend/types/responder"
+	"chouxcream-backend/types/responder"
 )
 
 var limiterReached = &responder.GenericError{

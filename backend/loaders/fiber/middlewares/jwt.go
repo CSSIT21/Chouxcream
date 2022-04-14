@@ -4,9 +4,9 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/jwt/v3"
 
-	"noty-backend/types/common"
-	"noty-backend/types/responder"
-	"noty-backend/utils/config"
+	"chouxcream-backend/types/common"
+	"chouxcream-backend/types/responder"
+	"chouxcream-backend/utils/config"
 )
 
 var Jwt = func() fiber.Handler {

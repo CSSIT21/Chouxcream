@@ -7,12 +7,12 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	"noty-backend/endpoints"
-	"noty-backend/loaders/fiber/middlewares"
-	"noty-backend/swagger"
-	"noty-backend/types/responder"
-	"noty-backend/utils/config"
-	"noty-backend/utils/logger"
+	"chouxcream-backend/endpoints"
+	"chouxcream-backend/loaders/fiber/middlewares"
+	"chouxcream-backend/swagger"
+	"chouxcream-backend/types/responder"
+	"chouxcream-backend/utils/config"
+	"chouxcream-backend/utils/logger"
 )
 
 var app *fiber.App
@@ -32,7 +32,7 @@ func Init() {
 	app.All("/", func(c *fiber.Ctx) error {
 		return c.JSON(responder.InfoResponse{
 			Success: true,
-			Info:    "KONLAYUTH_HOMEPAGE_API_ROOT",
+			Info:    "CHOUXCREAM_API_ROOT",
 		})
 	})
 

@@ -10,6 +10,6 @@ type config struct {
 
 	JwtSecret string
 
-	MongoUri    string
-	MongoDbName string
+	MySqlDsn     string
+	MySqlMigrate bool
 }
