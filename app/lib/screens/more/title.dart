@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
 class titleBar extends StatelessWidget {
-  const titleBar({required this.title, required this.routes});
+  const titleBar({Key? key, required this.title, required this.routes}) : super(key: key);
 
   final String title;
   final String routes;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: (){
+        //Navigator.push(context, MaterialPageRoute(builder: (context) => routes));
+      },
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 32.0),
-        child: GestureDetector(
-          onTap: (){
-            //Navigator.push(context, MaterialPageRoute(builder: (context) => routes));
-          },
+        padding: EdgeInsets.symmetric(vertical: 20.0),          
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +23,6 @@ class titleBar extends StatelessWidget {
             ],
           ),
         ),
-      )
     );
   }
 }
