@@ -1,6 +1,9 @@
 import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/models/user/user_information.dart';
 import 'package:chouxcream_app/screens/more/title.dart';
+import 'package:chouxcream_app/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MoreFragment extends StatefulWidget {
   const MoreFragment({Key? key}) : super(key: key);
@@ -10,12 +13,27 @@ class MoreFragment extends StatefulWidget {
 }
 
 class _MoreFragmentState extends State<MoreFragment> {
-  // late SharedPreferences prefs;
+  late SharedPreferences prefs;
+  User user = User(name: '', email: '', avatarUrl: '');
+  
+  void initState() {
+    _readJson();
+    super.initState();
+  }
 
-  // deleteUserData() async {
-  //   prefs = await SharedPreferences.getInstance();
-  //   await prefs.clear();
-  // }
+  deleteUserData() async {
+    prefs = await SharedPreferences.getInstance();
+    await prefs.remove('user');
+  }
+
+  Future<void> _readJson() async {
+    User responseUser = await UserService.getData();
+    if (mounted) {
+      setState(() {
+        user = responseUser;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +57,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                   CircleAvatar(
                     maxRadius: 40.0,
                     backgroundColor: ThemeConstant.colorSecondaryDark,
-                    backgroundImage: NetworkImage(''),
+                    backgroundImage: NetworkImage(user.avatarUrl),
                   ),
                   const Padding(
                       padding:
@@ -48,7 +66,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Username",
+                        user.name,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -81,7 +99,7 @@ class _MoreFragmentState extends State<MoreFragment> {
             titleBar(title: "Achivement", routes: ""),
             InkWell(
               onTap: () {
-                // deleteUserData();
+                deleteUserData();
                 // Navigator.pushReplacement(
                 //     context,
                 //     MaterialPageRoute(
