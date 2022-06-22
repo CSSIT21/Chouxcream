@@ -88,7 +88,13 @@ class _FormState extends State<Form> {
                   CustomFormField(
                       headingText: "Email",
                       hintText: "Email",
+                      suffixText: "",
+                      fontsize: 14,
+                      fontweight: FontWeight.w500,
                       obsecureText: false,
+                      validator: (ValueKey) {
+                        return null;
+                      },
                       suffixIcon: const SizedBox(),
                       textInputType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.done,
@@ -100,6 +106,12 @@ class _FormState extends State<Form> {
                   CustomFormField(
                       headingText: "Password",
                       hintText: "At least 8 Character",
+                      suffixText: "",
+                      fontsize: 14,
+                      fontweight: FontWeight.w500,
+                       validator: (ValueKey) {
+                        return null;
+                      },
                       obsecureText: true,
                       suffixIcon: IconButton(
                           icon: const Icon(Icons.visibility), onPressed: () {}),

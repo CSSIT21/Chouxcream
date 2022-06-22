@@ -10,18 +10,26 @@ class CustomFormField extends StatelessWidget {
   final TextInputAction textInputAction;
   final TextEditingController controller;
   final int maxLines;
+  final double? fontsize;
+   final FontWeight? fontweight;
+  final String suffixText;
+  final String? Function(String?)? validator;
 
-  const CustomFormField(
-      {Key? key,
-      required this.headingText,
-      required this.hintText,
-      required this.obsecureText,
-      required this.suffixIcon,
-      required this.textInputType,
-      required this.textInputAction,
-      required this.controller,
-      required this.maxLines})
-      : super(key: key);
+  const CustomFormField({
+    Key? key,
+    required this.headingText,
+    required this.hintText,
+    required this.obsecureText,
+    required this.suffixIcon,
+    required this.textInputType,
+    required this.textInputAction,
+    required this.controller,
+    required this.suffixText,
+    this.validator,
+    required this.fontsize,
+    this.fontweight,
+    required this.maxLines,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +44,10 @@ class CustomFormField extends StatelessWidget {
           ),
           child: Text(
             headingText,
-            style: const TextStyle(
-                color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: fontsize,
+                fontWeight: fontweight),
           ),
         ),
         Container(
@@ -51,7 +61,8 @@ class CustomFormField extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: TextField(
+            child: TextFormField(
+              validator: validator,
               maxLines: maxLines,
               controller: controller,
               textInputAction: textInputAction,
@@ -59,7 +70,8 @@ class CustomFormField extends StatelessWidget {
               obscureText: obsecureText,
               decoration: InputDecoration(
                   hintText: hintText,
-                  hintStyle: TextStyle(
+                  suffixText: suffixText,
+                  hintStyle: const TextStyle(
                       color: Color(0xFFC7C7CD),
                       fontSize: 14,
                       fontWeight: FontWeight.w500),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chouxcream_app/screens/start/information/index.dart';
 import 'package:chouxcream_app/screens/start/login/index.dart';
 import 'package:chouxcream_app/widgets/custom_formfield.dart';
 import 'package:chouxcream_app/widgets/custom_header.dart';
@@ -29,18 +30,18 @@ class _SignUpState extends State<SignUp> {
       RoundedLoadingButtonController();
 
   // Just a mock function to simulating network activity delay
-  void _loginCall() async {
+  void _signupCall() async {
     Timer(const Duration(milliseconds: 2500), () {
       _loginBtnController.success();
-      _loginNavigate();
+      _signupNavigate();
     });
   }
 
-  void _loginNavigate() async {
+  void _signupNavigate() async {
     Timer(const Duration(milliseconds: 1500), () {
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const CoreScreen()),
+          MaterialPageRoute(builder: (context) => const InformationScreen()),
           (Route<dynamic> route) =>
               false); // Clear all navigation stack and then navigate
     });
@@ -93,6 +94,12 @@ class _SignUpState extends State<SignUp> {
                     CustomFormField(
                         headingText: "Username",
                         hintText: "username",
+                        suffixText: "",
+                        fontsize: 14,
+                        fontweight: FontWeight.w500,
+                        validator: (ValueKey) {
+                          return null;
+                        },
                         obsecureText: false,
                         suffixIcon: const SizedBox(),
                         textInputType: TextInputType.text,
@@ -105,6 +112,12 @@ class _SignUpState extends State<SignUp> {
                     CustomFormField(
                         headingText: "Email",
                         hintText: "Email",
+                        suffixText: "",
+                        fontsize: 14,
+                        fontweight: FontWeight.w500,
+                        validator: (ValueKey) {
+                          return null;
+                        },
                         obsecureText: false,
                         suffixIcon: const SizedBox(),
                         textInputType: TextInputType.text,
@@ -117,6 +130,12 @@ class _SignUpState extends State<SignUp> {
                     CustomFormField(
                         headingText: "Password",
                         hintText: "At least 8 character",
+                        fontsize: 14,
+                        fontweight: FontWeight.w500,
+                        suffixText: "",
+                        validator: (ValueKey) {
+                          return null;
+                        },
                         obsecureText: true,
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.visibility),
@@ -131,8 +150,8 @@ class _SignUpState extends State<SignUp> {
                     ),
                     RoundedLoadingButton(
                       controller: _loginBtnController,
-                      onPressed: _loginCall,
-                      child: const Text('Login',
+                      onPressed: _signupCall,
+                      child: const Text('Sign Up',
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                       color: ThemeConstant.colorPrimary,
                     ),
