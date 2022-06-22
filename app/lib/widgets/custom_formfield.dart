@@ -11,16 +11,17 @@ class CustomFormField extends StatelessWidget {
   final TextEditingController controller;
   final int maxLines;
 
-  const CustomFormField({Key? key,
-  required this.headingText,
-  required this.hintText,
-  required this.obsecureText,
-  required this.suffixIcon,
-  required this.textInputType,
-  required this.textInputAction,
-  required this.controller,
-  required this.maxLines
-  }) : super(key: key);
+  const CustomFormField(
+      {Key? key,
+      required this.headingText,
+      required this.hintText,
+      required this.obsecureText,
+      required this.suffixIcon,
+      required this.textInputType,
+      required this.textInputAction,
+      required this.controller,
+      required this.maxLines})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +36,8 @@ class CustomFormField extends StatelessWidget {
           ),
           child: Text(
             headingText,
-            style: TextStyle( color: Color(0xFFC7C7CD), fontSize: 14, fontWeight: FontWeight.w500
-            ),
+            style: const TextStyle(
+                color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
         Container(
@@ -57,11 +58,13 @@ class CustomFormField extends StatelessWidget {
               keyboardType: textInputType,
               obscureText: obsecureText,
               decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(color: Color(0xFFC7C7CD), fontSize: 14, fontWeight: FontWeight.w500),
-                border: InputBorder.none,
-                suffixIcon: suffixIcon
-              ),
+                  hintText: hintText,
+                  hintStyle: TextStyle(
+                      color: Color(0xFFC7C7CD),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
+                  border: InputBorder.none,
+                  suffixIcon: suffixIcon),
             ),
           ),
         )

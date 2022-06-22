@@ -22,7 +22,8 @@ class _FormState extends State<Form> {
 
   String get email => _emailController.text.trim();
   String get password => _passwordController.text.trim();
-  final RoundedLoadingButtonController _loginBtnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _loginBtnController =
+      RoundedLoadingButtonController();
 
   // Just a mock function to simulating network activity delay
   void _loginCall() async {
@@ -34,8 +35,11 @@ class _FormState extends State<Form> {
 
   void _loginNavigate() async {
     Timer(const Duration(milliseconds: 1500), () {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const CoreScreen()),
-          (Route<dynamic> route) => false); // Clear all navigation stack and then navigate
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const CoreScreen()),
+          (Route<dynamic> route) =>
+              false); // Clear all navigation stack and then navigate
     });
   }
 
@@ -52,24 +56,28 @@ class _FormState extends State<Form> {
           CustomHeader(
             text: 'Log In',
             onTap: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUp()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const SignUp()));
             },
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.08,
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.95,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40))),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     height: 200,
                     width: MediaQuery.of(context).size.width * 0.8,
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.09),
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.09, top: 5),
                     child: Image.asset(
                       'lib/asset/images/signin.png',
                     ),
@@ -93,7 +101,8 @@ class _FormState extends State<Form> {
                       headingText: "Password",
                       hintText: "At least 8 Character",
                       obsecureText: true,
-                      suffixIcon: IconButton(icon: const Icon(Icons.visibility), onPressed: () {}),
+                      suffixIcon: IconButton(
+                          icon: const Icon(Icons.visibility), onPressed: () {}),
                       textInputType: TextInputType.text,
                       textInputAction: TextInputAction.done,
                       controller: _passwordController,
@@ -102,19 +111,26 @@ class _FormState extends State<Form> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 24),
                         child: InkWell(
                           onTap: () {},
                           child: const Text(
                             "Forgot Password?",
-                            style: TextStyle(color: Color.fromARGB(255, 248, 193, 110), fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 248, 193, 110),
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       )
                     ],
                   ),
+                  const SizedBox(
+                    height: 50,
+                  ),
                   RoundedLoadingButton(
-                    child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20)),
+                    child: const Text('Login',
+                        style: TextStyle(color: Colors.white, fontSize: 20)),
                     color: ThemeConstant.colorPrimary,
                     controller: _loginBtnController,
                     onPressed: _loginCall,
@@ -123,7 +139,10 @@ class _FormState extends State<Form> {
                       description: "Don't have an account?",
                       text: "Sign Up",
                       onTap: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUp()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
                       })
                 ],
               ),
