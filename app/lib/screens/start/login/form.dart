@@ -109,7 +109,7 @@ class _FormState extends State<Form> {
                       suffixText: "",
                       fontsize: 14,
                       fontweight: FontWeight.w500,
-                       validator: (ValueKey) {
+                      validator: (ValueKey) {
                         return null;
                       },
                       obsecureText: true,
@@ -138,7 +138,7 @@ class _FormState extends State<Form> {
                     ],
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 80,
                   ),
                   RoundedLoadingButton(
                     child: const Text('Login',

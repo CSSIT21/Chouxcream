@@ -1,3 +1,4 @@
+import 'package:chouxcream_app/screens/start/information/second_index.dart';
 import 'package:chouxcream_app/screens/start/information/secondinfo.dart';
 import 'package:chouxcream_app/widgets/custom_formfield.dart';
 import 'package:flutter/material.dart';
@@ -122,17 +123,17 @@ class _InformationFormState extends State<InformationForm> {
                   maxLines: 1),
               Container(
                   margin: const EdgeInsets.only(
-                    left: 40,
-                    right: 10,
-                    top: 80,
+                    left: 280,
+                    right: 20,
+                    top: 160,
                   ),
                   child: SizedBox(
                       width: 42,
-                      height: 48,
+                      height: 38,
                       child: OutlinedButton(
                         child: const Text(
                           "Next",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -142,11 +143,11 @@ class _InformationFormState extends State<InformationForm> {
                                 width: 1.2,
                                 style: BorderStyle.solid))),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const SecondInfoForm()));
+                                      const SecondInfoScreen()));
                         },
                       ))),
             ],
