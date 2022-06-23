@@ -1,5 +1,8 @@
+import 'package:chouxcream_app/screens/start/information/secondinfo.dart';
 import 'package:chouxcream_app/widgets/custom_formfield.dart';
 import 'package:flutter/material.dart';
+
+import '../../../constants/theme.dart';
 
 class InformationForm extends StatefulWidget {
   const InformationForm({Key? key}) : super(key: key);
@@ -77,6 +80,10 @@ class _InformationFormState extends State<InformationForm> {
                             borderSide: BorderSide(color: Color(0xFFEBEBEB)),
                             borderRadius: BorderRadius.circular(15),
                           ),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFEBEBEB)),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           filled: true,
                           fillColor: Color(0xFFEBEBEB),
                         ),
@@ -112,7 +119,36 @@ class _InformationFormState extends State<InformationForm> {
                   validator: (ValueKey) {
                     return null;
                   },
-                  maxLines: 1)
+                  maxLines: 1),
+              Container(
+                  margin: const EdgeInsets.only(
+                    left: 40,
+                    right: 10,
+                    top: 80,
+                  ),
+                  child: SizedBox(
+                      width: 42,
+                      height: 48,
+                      child: OutlinedButton(
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                                ThemeConstant.pillBorderShape),
+                            side: MaterialStateProperty.all(const BorderSide(
+                                color: Color(0xFFE07D12),
+                                width: 1.2,
+                                style: BorderStyle.solid))),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SecondInfoForm()));
+                        },
+                      ))),
             ],
           ),
         ),
