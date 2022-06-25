@@ -32,7 +32,7 @@ func Init() {
 	app.All("/", func(c *fiber.Ctx) error {
 		return c.JSON(responder.InfoResponse{
 			Success: true,
-			Info:    "CHOUXCREAM_API_ROOT",
+			Message: "CHOUXCREAM_API_ROOT",
 		})
 	})
 
