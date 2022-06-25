@@ -101,7 +101,7 @@ class _EditProfileState extends State<EditProfile> {
                         const SizedBox(
                           height: 18,
                         ),
-                        const Text("Username"),
+                        const Text("Name"),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           controller: _usernameController,
