@@ -1,5 +1,7 @@
 import 'package:chouxcream_app/constants/theme.dart';
 import 'package:chouxcream_app/models/user/user_information.dart';
+import 'package:chouxcream_app/screens/more/edit_info/edit_info.dart';
+import 'package:chouxcream_app/screens/more/help_center/help_center.dart';
 import 'package:chouxcream_app/screens/more/title.dart';
 import 'package:chouxcream_app/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,7 @@ class MoreFragment extends StatefulWidget {
 class _MoreFragmentState extends State<MoreFragment> {
   late SharedPreferences prefs;
   User user = User(name: '', email: '', avatarUrl: '');
-  
+
   void initState() {
     _readJson();
     super.initState();
@@ -37,12 +39,12 @@ class _MoreFragmentState extends State<MoreFragment> {
 
   @override
   Widget build(BuildContext context) {
-    // _navigate(BuildContext context) async {
-    //   await Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //           builder: (context) => EditProfile())).then((_) => setState(() {}));
-    // }
+    _navigate(BuildContext context) async {
+      await Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => EditProfile(readJson: _readJson, userInfo: user,))).then((_) => setState(() {}));
+    }
 
     return Container(
       child: Padding(
@@ -56,7 +58,6 @@ class _MoreFragmentState extends State<MoreFragment> {
                 children: [
                   CircleAvatar(
                     maxRadius: 40.0,
-                    backgroundColor: ThemeConstant.colorSecondaryDark,
                     backgroundImage: NetworkImage(user.avatarUrl),
                   ),
                   const Padding(
@@ -72,7 +73,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // _navigate(context);
+                          _navigate(context);
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,16 +95,41 @@ class _MoreFragmentState extends State<MoreFragment> {
                 ],
               ),
             ),
-            titleBar(title: "Setting", routes: ""),
-            titleBar(title: "Help Center", routes: ""),
-            titleBar(title: "Achivement", routes: ""),
+            titleBar(title: "Setting", routes: HelpCenter()),
+            titleBar(title: "Help Center", routes: HelpCenter()),
+            titleBar(title: "Achivement", routes: HelpCenter()),
             InkWell(
               onTap: () {
-                deleteUserData();
-                // Navigator.pushReplacement(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => LoginScreen()));
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    alignment: Alignment.center,
+                    title: const Icon(Icons.warning_rounded, color: Colors.red, size: 60.0,),
+                    content: const Text('Are you sure, you want to logout?'),
+                    
+                    actionsAlignment: MainAxisAlignment.spaceEvenly,
+                    actions: [
+                      FlatButton(
+                        textColor: Colors.black,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('CANCEL'),
+                      ),
+                      FlatButton(
+                        textColor: Colors.black,
+                        onPressed: () {
+                          deleteUserData();                                                        
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => LoginScreen()));
+                        },
+                        child: const Text('LOG OUT', style: TextStyle(color: Colors.red),),
+                      ),
+                    ],
+                  ),
+                );
               },
               child: Container(
                 alignment: Alignment.centerLeft,
