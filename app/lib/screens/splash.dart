@@ -1,5 +1,6 @@
 import 'dart:async' as async;
 
+import 'package:chouxcream_app/constants/environment.dart';
 import 'package:chouxcream_app/constants/theme.dart';
 import 'package:chouxcream_app/screens/start/welcome/index.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
                       end: Alignment.bottomCenter,
                       tileMode: TileMode.mirror,
                       stops: const [.4, 12]),
+                ),
+                child: Column(
+                  children: [
+                    Text(EnvironmentConstant.production ? "Production" : "Development")
+                  ],
                 ),
               ),
             ),
