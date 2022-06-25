@@ -35,9 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   rounded_loading_button: ^2.1.0
-  simple_animations: ^3.0.1
+  simple_animations: ^3.1.0
   motion_tab_bar_v2: ^0.2.6
-  fl_chart: ^0.50.1
+  fl_chart: ^0.51.0
   shared_preferences: ^2.0.15
   dio: ^4.0.6
   image_picker: ^0.8.5
@@ -51,7 +51,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,6 +63,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - lib/asset/images/signin.png
+    - lib/asset/images/signup2.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -98,7 +98,7 @@ packages:
       name: fl_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.50.1"
+    version: "0.51.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -190,7 +190,7 @@ packages:
       name: lints
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "2.0.0"
   matcher:
     dependency: transitive
     description:
@@ -344,7 +344,7 @@ packages:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.1.1"
   sky_engine:
     dependency: transitive
     description: flutter

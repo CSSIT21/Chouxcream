@@ -1,5 +1,4 @@
 class EnvironmentConstant {
-  // Internal API
-  static String internalApiPrefix = "http://localhost:3000/api";
-  static String internalApiKey = "VlMjMm2FPlU9";
+  static bool production = const bool.fromEnvironment('dart.vm.product');
+  static String api = production ? "http://localhost:3000/api" : "https://chouxcream.bsthun.com/api";
 }

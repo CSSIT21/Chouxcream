@@ -10,15 +10,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   @override
   Widget build(BuildContext context) {
     // Learn more about tab bar: https://docs.flutter.dev/cookbook/design/tabs
     return Scaffold(
-        appBar: AppBar(title: Text("Login")),
-        body: Column(
-          children: const [Text("Hello"), Form()],
-        ));
+        // appBar: AppBar(title: Text("Login")),
+        body: SingleChildScrollView(
+      child: Stack(
+        children: const [Form()],
+      ),
+    ));
   }
 }
