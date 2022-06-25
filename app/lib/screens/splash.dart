@@ -53,11 +53,6 @@ class _SplashScreenState extends State<SplashScreen> {
                       tileMode: TileMode.mirror,
                       stops: const [.4, 12]),
                 ),
-                child: Column(
-                  children: [
-                    Text(EnvironmentConstant.production ? "Production" : "Development")
-                  ],
-                ),
               ),
             ),
           ),
