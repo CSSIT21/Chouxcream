@@ -6,10 +6,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 
-	"chouxcream-backend/types/responder"
+	"chouxcream-backend/types/response"
 )
 
-var limiterReached = &responder.GenericError{
+var limiterReached = &response.GenericError{
 	Message: "Rate limit reached, try again in a few minutes.",
 }
 

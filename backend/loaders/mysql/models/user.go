@@ -10,6 +10,7 @@ type User struct {
 	Lastname  *string    `gorm:"type:VARCHAR(255); not null"`
 	Email     *string    `gorm:"type:VARCHAR(255); index:email,unique; not null"`
 	Password  *string    `gorm:"type:VARCHAR(255); not null"`
-	CreatedAt *time.Time `gorm:"not null"` // Embedded field
-	UpdatedAt *time.Time `gorm:"not null"` // Embedded field
+	AvatarUrl *string    `gorm:"type:VARCHAR(255); null"` // Null represents no avatar
+	CreatedAt *time.Time `gorm:"not null"`                // Embedded field
+	UpdatedAt *time.Time `gorm:"not null"`                // Embedded field
 }

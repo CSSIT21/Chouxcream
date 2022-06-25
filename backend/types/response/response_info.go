@@ -1,4 +1,4 @@
-package responder
+package response
 
 type InfoResponse struct {
 	Success bool   `json:"success"`

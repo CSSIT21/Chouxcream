@@ -9,7 +9,6 @@ require (
 	github.com/gofiber/fiber/v2 v2.31.0
 	github.com/gofiber/jwt/v3 v3.2.10
 	github.com/sirupsen/logrus v1.8.1
-	github.com/swaggo/swag v1.8.1
 	gopkg.in/yaml.v2 v2.4.0
 	gorm.io/driver/mysql v1.3.3
 	gorm.io/gorm v1.23.4
@@ -35,6 +34,7 @@ require (
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/swaggo/files v0.0.0-20210815190702-a29dd2bc99b2 // indirect
+	github.com/swaggo/swag v1.8.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.35.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect

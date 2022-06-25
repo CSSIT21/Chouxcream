@@ -9,8 +9,8 @@ import (
 
 	"chouxcream-backend/endpoints"
 	"chouxcream-backend/loaders/fiber/middlewares"
-	"chouxcream-backend/swagger"
-	"chouxcream-backend/types/responder"
+	"chouxcream-backend/loaders/swagger"
+	"chouxcream-backend/types/response"
 	"chouxcream-backend/utils/config"
 	"chouxcream-backend/utils/logger"
 )
@@ -30,7 +30,7 @@ func Init() {
 
 	// Register root endpoint
 	app.All("/", func(c *fiber.Ctx) error {
-		return c.JSON(responder.InfoResponse{
+		return c.JSON(response.InfoResponse{
 			Success: true,
 			Message: "CHOUXCREAM_API_ROOT",
 		})
