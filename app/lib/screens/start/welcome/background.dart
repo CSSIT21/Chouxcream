@@ -14,8 +14,10 @@ class Background extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            ThemeConstant.swatchAccentLight[700] ?? ThemeConstant.colorAccentLight,
-            ThemeConstant.swatchAccentDark[900] ?? ThemeConstant.colorAccentDark,
+            ThemeConstant.swatchAccentLight[700] ??
+                ThemeConstant.colorAccentLight,
+            ThemeConstant.swatchAccentDark[900] ??
+                ThemeConstant.colorAccentDark,
           ],
           stops: const [
             0,
