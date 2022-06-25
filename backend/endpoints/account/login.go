@@ -73,5 +73,14 @@ func LoginHandler(c *fiber.Ctx) error {
 		}
 	}
 
-	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token}))
+	// * Fetch preference settings
+	preferenceCount := new(int)
+	if result := mysql.Gorm.Select("COUNT(id)").Where("id = ?", user.Id).First(preferenceCount); result.Error != nil && result.Error != sql.ErrNoRows {
+		return &response.GenericError{
+			Message: "Unable to query user record",
+			Err:     result.Error,
+		}
+	}
+
+	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token, "setup": preferenceCount == nil}))
 }
