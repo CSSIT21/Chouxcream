@@ -7,7 +7,7 @@ dev:
 	air run
 
 swag:
-	swag init -g ./swagger/index.go -o ./swagger
+	swag init -g ./loaders/swagger/index.go -o ./loaders/swagger
 
 tidy:
 	go mod tidy

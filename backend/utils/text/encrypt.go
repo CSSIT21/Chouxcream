@@ -10,10 +10,13 @@ import (
 
 func HashPassword(password string) (string, *response.GenericError) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	return string(bytes), &response.GenericError{
-		Message: "Unable to hash password",
-		Err:     err,
+	if err != nil {
+		return "", &response.GenericError{
+			Message: "Unable to hash password",
+			Err:     err,
+		}
 	}
+	return string(bytes), nil
 }
 
 func ComparePassword(hashedPassword string, password string) bool {

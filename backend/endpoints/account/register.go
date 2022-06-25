@@ -18,8 +18,8 @@ import (
 // @Accept json
 // @Produce json
 // @Param payload body payload.RegisterInformation true "payload.RegisterInformation"
-// @Success 200 {object} responder.InfoResponse
-// @Failure 400 {object} responder.ErrorResponse
+// @Success 200 {object} response.InfoResponse
+// @Failure 400 {object} response.ErrorResponse
 // @Router /account/register [post]
 func RegisterHandler(c *fiber.Ctx) error {
 	// * Parse body

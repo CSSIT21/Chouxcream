@@ -21,8 +21,8 @@ import (
 // @Accept json
 // @Produce json
 // @Param payload body payload.LoginInformation true "payload.LoginInformation"
-// @Success 200 {object} responder.InfoResponse
-// @Failure 400 {object} responder.ErrorResponse
+// @Success 200 {object} response.InfoResponse
+// @Failure 400 {object} response.ErrorResponse
 // @Router /account/login [post]
 func LoginHandler(c *fiber.Ctx) error {
 	// * Parse body
