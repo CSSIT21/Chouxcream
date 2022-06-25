@@ -2,8 +2,8 @@
 /local
 
 # Swagger generates
-/swagger/*
-!/swagger/index.go
+/loaders/swagger/*
+!/loaders/swagger/index.go
 
 # Config file
 /config.yaml

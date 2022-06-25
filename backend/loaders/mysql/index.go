@@ -66,10 +66,10 @@ func Init() {
 }
 
 func migrate() error {
-	for _, model := range Models {
-		if err := Gorm.AutoMigrate(model.Struct); err != nil {
-			return err
-		}
+	if err := Gorm.AutoMigrate(
+		UserModel,
+	); err != nil {
+		return err
 	}
 
 	return nil

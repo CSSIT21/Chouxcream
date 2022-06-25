@@ -1,4 +1,4 @@
-package responder
+package response
 
 type ErrorResponse struct {
 	Success bool   `json:"success"`

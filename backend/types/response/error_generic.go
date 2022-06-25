@@ -1,4 +1,4 @@
-package responder
+package response
 
 type GenericError struct {
 	Code    string

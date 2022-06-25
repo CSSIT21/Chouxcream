@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/jwt/v3"
 
 	"chouxcream-backend/types/common"
-	"chouxcream-backend/types/responder"
+	"chouxcream-backend/types/response"
 	"chouxcream-backend/utils/config"
 )
 
@@ -16,7 +16,7 @@ var Jwt = func() fiber.Handler {
 		ContextKey:  "user",
 		Claims:      &common.UserClaim{},
 		ErrorHandler: func(c *fiber.Ctx, err error) error {
-			return &responder.GenericError{
+			return &response.GenericError{
 				Message: "JWT validation failure",
 				Err:     err,
 			}
