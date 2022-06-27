@@ -1,15 +1,13 @@
 import 'dart:async';
 
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/start/information/index.dart';
 import 'package:chouxcream_app/screens/start/login/index.dart';
-import 'package:chouxcream_app/widgets/custom_formfield.dart';
+import 'package:chouxcream_app/widgets/custom_form_field.dart';
 import 'package:chouxcream_app/widgets/custom_header.dart';
-import 'package:chouxcream_app/widgets/custom_richtext.dart';
+import 'package:chouxcream_app/widgets/custom_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-
-import '../../../constants/theme.dart';
-import '../../core/index.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);

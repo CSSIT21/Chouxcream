@@ -1,4 +1,4 @@
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/core/index.dart';
 import 'package:chouxcream_app/screens/start/information/index.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ class InfoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: Row(
         children: [
           Container(
@@ -24,10 +24,6 @@ class InfoButton extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const InformationScreen()));
                 },
-                child: const Text(
-                  "back",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all(
                         ThemeConstant.pillBorderShape),
@@ -35,6 +31,10 @@ class InfoButton extends StatelessWidget {
                         color: Color(0xFFE07D12),
                         width: 1.2,
                         style: BorderStyle.solid))),
+                child: const Text(
+                  "back",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
           ),
@@ -45,10 +45,6 @@ class InfoButton extends StatelessWidget {
               width: 82,
               height: 38,
               child: OutlinedButton(
-                child: const Text(
-                  "next",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all(
                         ThemeConstant.pillBorderShape),
@@ -60,6 +56,10 @@ class InfoButton extends StatelessWidget {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => CoreScreen()));
                 },
+                child: const Text(
+                  "next",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
               ),
             ),
           )

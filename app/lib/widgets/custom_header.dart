@@ -11,7 +11,7 @@ class CustomHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 16, left: 16),
+      margin: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +29,7 @@ class CustomHeader extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700
             ),
           )

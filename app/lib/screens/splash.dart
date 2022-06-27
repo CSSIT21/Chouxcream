@@ -1,9 +1,11 @@
 import 'dart:async' as async;
 
-import 'package:chouxcream_app/constants/environment.dart';
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/caller.dart';
+import 'package:chouxcream_app/classes/theme.dart';
+import 'package:chouxcream_app/screens/core/index.dart';
 import 'package:chouxcream_app/screens/start/welcome/index.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,15 +15,31 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  _SplashScreenState() {
+  _SplashScreenState();
+
+  Future navigate() async {
+    // Get user token from shared preferences
+    final prefs = await SharedPreferences.getInstance();
+    final String token = prefs.getString('token') ?? "";
+
+    // Set caller token value
+    Caller.setToken(token);
+
+    // Navigate to next screen
     async.Timer(const Duration(milliseconds: 2500), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  const WelcomeScreen()) // Use pushReplacement for clear backstack.
-          );
+              builder: (context) => token == ""
+                  ? const WelcomeScreen()
+                  : const CoreScreen())); // Use pushReplacement for clear backstack.
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    navigate();
   }
 
   @override
@@ -33,15 +51,6 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Opacity(
               opacity: .6,
               child: Container(
-                child: const Center(
-                  child: Text(
-                    "CHOUXCREAM",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32),
-                  ),
-                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [
@@ -52,6 +61,15 @@ class _SplashScreenState extends State<SplashScreen> {
                       end: Alignment.bottomCenter,
                       tileMode: TileMode.mirror,
                       stops: const [.4, 12]),
+                ),
+                child: const Center(
+                  child: Text(
+                    "CHOUXCREAM",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32),
+                  ),
                 ),
               ),
             ),

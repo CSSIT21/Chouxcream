@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/models/user/user_information.dart';
 import 'package:chouxcream_app/screens/more/edit_info/edit_pic.dart';
 import 'package:flutter/material.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class EditProfile extends StatefulWidget {
   final Function readJson;
@@ -59,28 +59,33 @@ class _EditProfileState extends State<EditProfile> {
           title: const Text('Edit Profile'),
         ),
         body: Form(
-          child: ListView(
-            children: [
-            Padding(
+            child: ListView(children: [
+          Padding(
               padding: const EdgeInsets.all(0),
               child: Column(
                 children: [
-                  const SizedBox(height: 40,),
-                  _imageFile == null ? EditPicture(
-                    image: NetworkImage(user.avatarUrl),
-                    onTaped: () {
-                      getImageFromGallery();
-                      },
-                    )
-                  : EditPicture(
-                      image: FileImage(_imageFile!),
-                      onTaped: () {
-                        getImageFromGallery();
-                      },
-                    ),
-                  const SizedBox(height: 38,),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  _imageFile == null
+                      ? EditPicture(
+                          image: NetworkImage(user.avatarUrl),
+                          onTaped: () {
+                            getImageFromGallery();
+                          },
+                        )
+                      : EditPicture(
+                          image: FileImage(_imageFile!),
+                          onTaped: () {
+                            getImageFromGallery();
+                          },
+                        ),
+                  const SizedBox(
+                    height: 38,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 45, vertical: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -149,11 +154,7 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ),
                 ],
-              )
-            )
-          ]
-        )
-      )
-    );
+              ))
+        ])));
   }
 }

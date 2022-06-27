@@ -11,7 +11,7 @@ class RouteConstant {
     return <String, material.WidgetBuilder>{
       '/': (_) => const SplashScreen(),
       '/welcome': (_) => const WelcomeScreen(),
-      '/signin': (_) => const LoginScreen(),
+      '/login': (_) => const LoginScreen(),
       '/info': (_) => const InformationScreen(),
       '/second_info': (_) => const SecondInfoScreen(),
     };

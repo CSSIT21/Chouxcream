@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 
 class CustomFormField extends StatelessWidget {
   final String headingText;

@@ -1,6 +1,6 @@
-import 'package:chouxcream_app/constants/manifest.dart';
-import 'package:chouxcream_app/constants/route.dart';
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/manifest.dart';
+import 'package:chouxcream_app/classes/route.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: ManifestConstant.appName,
+      title: ManifestConstant .appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeConstant.theme,
       routes: RouteConstant.route(),

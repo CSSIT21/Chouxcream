@@ -1,4 +1,4 @@
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
@@ -23,7 +23,7 @@ class CustomRichText extends StatelessWidget {
       //     top: MediaQuery.of(context).size.height * 0.02),
       child: Text.rich(
         TextSpan(
-            text: description,
+            text: "$description ",
             style: const TextStyle(color: Colors.black87, fontSize: 16),
             children: [
               TextSpan(

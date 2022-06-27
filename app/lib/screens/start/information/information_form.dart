@@ -1,9 +1,8 @@
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/start/information/second_index.dart';
 import 'package:chouxcream_app/screens/start/information/secondinfo.dart';
-import 'package:chouxcream_app/widgets/custom_formfield.dart';
+import 'package:chouxcream_app/widgets/custom_form_field.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants/theme.dart';
 
 class InformationForm extends StatefulWidget {
   const InformationForm({Key? key}) : super(key: key);
@@ -16,12 +15,13 @@ class _InformationFormState extends State<InformationForm> {
   final _formkey = GlobalKey<FormState>();
   final _age = TextEditingController();
   String? selectedGender;
-  List _types = ['Male', 'Female'];
+  final List _types = ['Male', 'Female'];
 
   String get age => _age.text.trim();
 
   @override
   void initState() {
+    super.initState();
     selectedGender = _types[0];
   }
 
@@ -29,7 +29,7 @@ class _InformationFormState extends State<InformationForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: const Size.fromHeight(70.0),
         child: AppBar(
           centerTitle: true,
           title: const Text(
@@ -131,10 +131,6 @@ class _InformationFormState extends State<InformationForm> {
                   width: 82,
                   height: 38,
                   child: OutlinedButton(
-                    child: const Text(
-                      "next",
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                    ),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(
                             ThemeConstant.pillBorderShape),
@@ -145,6 +141,10 @@ class _InformationFormState extends State<InformationForm> {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/second_info');
                     },
+                    child: const Text(
+                      "next",
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
                   ))),
         ]),
       ),

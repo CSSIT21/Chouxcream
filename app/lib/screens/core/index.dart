@@ -1,5 +1,5 @@
-import 'package:chouxcream_app/constants/manifest.dart';
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/manifest.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/more/index.dart';
 import 'package:chouxcream_app/screens/progress/index.dart';
 import 'package:chouxcream_app/screens/today/index.dart';
@@ -70,7 +70,8 @@ class _CoreScreenState extends State<CoreScreen> with TickerProviderStateMixin {
         },
       ),
       body: TabBarView(
-        physics: const NeverScrollableScrollPhysics(), // Swipe navigation handling is not supported
+        physics: const NeverScrollableScrollPhysics(),
+        // Swipe navigation handling is not supported
         controller: _tabController,
         children: const [
           TodayFragment(),

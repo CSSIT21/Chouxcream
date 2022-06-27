@@ -1,4 +1,4 @@
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:flutter/material.dart';
 
 class EditPicture extends StatefulWidget {

@@ -1,4 +1,3 @@
-import 'package:chouxcream_app/constants/theme.dart';
 import 'package:chouxcream_app/models/user/user_information.dart';
 import 'package:chouxcream_app/screens/more/edit_info/edit_info.dart';
 import 'package:chouxcream_app/screens/more/help_center/help_center.dart';

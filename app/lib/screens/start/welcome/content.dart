@@ -1,4 +1,4 @@
-import 'package:chouxcream_app/constants/theme.dart';
+import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/start/login/index.dart';
 import 'package:flutter/material.dart';
 
@@ -35,10 +35,6 @@ class Content extends StatelessWidget {
                   width: 192,
                   height: 48,
                   child: OutlinedButton(
-                    child: const Text(
-                      "Get started",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
                     style: ButtonStyle(
                         overlayColor: MaterialStateProperty.all(Colors.white.withOpacity(0.2)),
                         shape: MaterialStateProperty.all(ThemeConstant.pillBorderShape),
@@ -47,6 +43,10 @@ class Content extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                     },
+                    child: const Text(
+                      "Get started",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                   ))
             ]));
   }
