@@ -1,4 +1,4 @@
 class EnvironmentConstant {
   static bool production = const bool.fromEnvironment('dart.vm.product');
-  static String api = production ? "http://localhost:3000/api" : "https://chouxcream.bsthun.com/api";
+  static String api = production ? "https://chouxcream.bsthun.com/api" : "http://localhost:3000/api";
 }

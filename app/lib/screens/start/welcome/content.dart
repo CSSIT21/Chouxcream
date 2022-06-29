@@ -25,7 +25,7 @@ class Content extends StatelessWidget {
                 height: 12,
               ),
               const Text(
-                "A new way to find the perfect match\nof foods,personalized just for you.\nEnjoy your meals while keeping\nyourself healthy, let’s start now!",
+                "A new way to find the perfect match\nof foods, personalized just for you.\nEnjoy your meals while keeping\nyourself healthy, let’s start now!",
                 style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
               ),
               const SizedBox(
