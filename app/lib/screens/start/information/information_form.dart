@@ -15,7 +15,7 @@ class _InformationFormState extends State<InformationForm> {
   final _formkey = GlobalKey<FormState>();
   final _age = TextEditingController();
   String? selectedGender;
-  final List _types = ['Male', 'Female'];
+  final List _types = ['Male', 'Female', 'Unspecified'];
 
   String get age => _age.text.trim();
 

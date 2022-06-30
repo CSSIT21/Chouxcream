@@ -14,6 +14,7 @@ class CustomFormField extends StatelessWidget {
    final FontWeight? fontweight;
   final String suffixText;
   final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
 
   const CustomFormField({
     Key? key,
@@ -27,6 +28,7 @@ class CustomFormField extends StatelessWidget {
     required this.suffixText,
     this.validator,
     required this.fontsize,
+    this.autovalidateMode,
     this.fontweight,
     required this.maxLines,
   }) : super(key: key);
@@ -63,6 +65,7 @@ class CustomFormField extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: TextFormField(
               validator: validator,
+              autovalidateMode: autovalidateMode,
               maxLines: maxLines,
               controller: controller,
               textInputAction: textInputAction,

@@ -20,12 +20,9 @@ class Form extends StatefulWidget {
 class _FormState extends State<Form> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  String get email => _emailController.text.trim();
-
-  String get password => _passwordController.text.trim();
   final RoundedLoadingButtonController _loginBtnController =
       RoundedLoadingButtonController();
+  final _formkey = GlobalKey<FormState>();
 
   // Just a mock function to simulating network activity delay
   void _loginCall() async {
@@ -70,6 +67,7 @@ class _FormState extends State<Form> {
                 ),
                 Expanded(
                   flex: 1,
+                  key: _formkey,
                   child: Container(
                     decoration: const BoxDecoration(
                         color: Colors.white,
@@ -85,7 +83,8 @@ class _FormState extends State<Form> {
                             children: [
                               Container(
                                 height: 200,
-                                margin: const EdgeInsets.symmetric(vertical: 30),
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 30),
                                 child: Image.asset(
                                   'lib/asset/images/signin.png',
                                 ),
@@ -97,6 +96,8 @@ class _FormState extends State<Form> {
                                   headingText: "Email",
                                   hintText: "Email",
                                   suffixText: "",
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
                                   fontsize: 14,
                                   fontweight: FontWeight.w500,
                                   obsecureText: false,
@@ -115,6 +116,8 @@ class _FormState extends State<Form> {
                                   headingText: "Password",
                                   hintText: "At least 8 Character",
                                   suffixText: "",
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
                                   fontsize: 14,
                                   fontweight: FontWeight.w500,
                                   validator: (value) {
