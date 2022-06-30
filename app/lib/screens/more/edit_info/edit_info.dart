@@ -21,7 +21,9 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final _formkey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  final _usernameController = TextEditingController();
+  final _userController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   final _editBtnController = RoundedLoadingButtonController();
   bool isSubmit = false;
   User user = User(name: '', email: '', avatarUrl: '');
@@ -39,7 +41,7 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
     _emailController.text = user.email;
-    _usernameController.text = user.name;
+    _userController.text = user.name;
   }
 
   void getImageFromGallery() async {
@@ -109,10 +111,10 @@ class _EditProfileState extends State<EditProfile> {
                         const Text("Name"),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          controller: _usernameController,
+                          controller: _userController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter username';
+                              return 'Please enter name';
                             }
                           },
                           decoration: InputDecoration(
@@ -134,10 +136,83 @@ class _EditProfileState extends State<EditProfile> {
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 60),
                       child: RoundedLoadingButton(
-                        height: 70,
+                        height: 50,
                         width: 420,
                         color: ThemeConstant.colorPrimary,
                         child: const Text('Save'),
+                        controller: _editBtnController,
+                        onPressed: () {
+                          setState(() {
+                            isSubmit = true;
+                          });
+                          if (_formkey.currentState!.validate()) {
+                            _formkey.currentState!.save();
+                            //_editCall();
+                            isSubmit = false;
+                          }
+                          _editBtnController.reset();
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("New Password"),
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter password';
+                            } else if (value.length < 8) {
+                              return 'Your password length is incorrect';
+                            }
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          controller: _passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: ThemeConstant.colorPrimary))),
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        const Text("Confirm New Password"),
+                        TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter confirm password';
+                            } else if (_passwordController.text !=
+                                _confirmPasswordController.text) {
+                              return 'Confirm password is not match';
+                            }
+                          },
+                          controller: _confirmPasswordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: ThemeConstant.colorPrimary))),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                      ]
+                    )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 35),
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 60),
+                      child: RoundedLoadingButton(
+                        height: 50,
+                        width: 420,
+                        color: ThemeConstant.colorPrimary,
+                        child: const Text('Change Password'),
                         controller: _editBtnController,
                         onPressed: () {
                           setState(() {

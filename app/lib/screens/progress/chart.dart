@@ -51,25 +51,25 @@ class BarChartWidget extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Mn';
+        text = 'Mon';
         break;
       case 1:
-        text = 'Te';
+        text = 'Tue';
         break;
       case 2:
-        text = 'Wd';
+        text = 'Wed';
         break;
       case 3:
-        text = 'Tu';
+        text = 'Thu';
         break;
       case 4:
-        text = 'Fr';
+        text = 'Fri';
         break;
       case 5:
-        text = 'St';
+        text = 'Sat';
         break;
       case 6:
-        text = 'Sn';
+        text = 'Sun';
         break;
       default:
         text = '';
@@ -78,12 +78,39 @@ class BarChartWidget extends StatelessWidget {
     return Center(child: Text(text, style: style));
   }
 
+  Widget rightTitles(double value, TitleMeta meta) {
+    const style = TextStyle(
+      color: Color(0xff7589a2),
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    );
+    String text;
+    if (value == 0) {
+      text = 'kCal';
+    } else if (value == 5) {
+      text = '500';
+    } else if (value == 10) {
+      text = '1000';
+    } else if (value == 15) {
+      text = '1500';
+    } else if (value == 20) {
+      text = '2000';
+    } else {
+      return Container();
+    }
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 0,
+      child: Text(text, style: style),
+    );
+  }
+
   FlTitlesData get titlesData => FlTitlesData(
         show: true,
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 30,
+            reservedSize: 26,
             getTitlesWidget: getTitles,
           ),
         ),
@@ -94,7 +121,12 @@ class BarChartWidget extends StatelessWidget {
           sideTitles: SideTitles(showTitles: false),
         ),
         rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 40,
+            interval: 1,
+            getTitlesWidget: rightTitles,
+          ),
         ),
       );
 
@@ -104,8 +136,8 @@ class BarChartWidget extends StatelessWidget {
 
   final _barsGradient = const LinearGradient(
     colors: [
-      Colors.lightBlueAccent,
-      Colors.greenAccent,
+      Colors.green,
+      Colors.orange,
     ],
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
