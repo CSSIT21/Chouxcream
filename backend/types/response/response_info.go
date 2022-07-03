@@ -25,8 +25,8 @@ func NewResponse(args1 any, args2 ...any) *InfoResponse {
 		} else {
 			return &InfoResponse{
 				Success: true,
-				Code:    message,
-				Data:    message2,
+				Message: message,
+				Data:    args2[0],
 			}
 		}
 	}

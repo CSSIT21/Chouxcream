@@ -7,8 +7,8 @@ import (
 )
 
 type Preference struct {
-	Id           *uint64      `gorm:"primaryKey"`
-	User         *User        `gorm:"foreignKey:Id"`
+	UserId       *uint64      `gorm:"primaryKey"`
+	User         *User        `gorm:"foreignKey:UserId"`
 	Gender       *enum.Gender `gorm:"type:ENUM('M', 'F', 'U'); not null"`
 	Birthdate    *time.Time   `gorm:"not null"`
 	Height       int          `gorm:"not null"`

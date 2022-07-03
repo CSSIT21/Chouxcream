@@ -16,11 +16,7 @@ class CustomRichText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(top: 10),
-      // margin: EdgeInsets.only(
-      //     left: MediaQuery.of(context).size.width * 0.22,
-      //     top: MediaQuery.of(context).size.height * 0.02),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Text.rich(
         TextSpan(
             text: "$description ",
