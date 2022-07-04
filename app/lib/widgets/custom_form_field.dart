@@ -39,11 +39,7 @@ class CustomFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            bottom: 10,
-          ),
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: Text(
             headingText,
             style: TextStyle(
@@ -53,16 +49,13 @@ class CustomFormField extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             color: const Color(0xFFEBEBEB),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 4),
             child: TextFormField(
               validator: validator,
               autovalidateMode: autovalidateMode,

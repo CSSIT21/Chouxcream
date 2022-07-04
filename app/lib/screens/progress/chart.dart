@@ -136,7 +136,7 @@ class BarChartWidget extends StatelessWidget {
 
   final _barsGradient = const LinearGradient(
     colors: [
-      Colors.green,
+      Colors.orange,
       Colors.orange,
     ],
     begin: Alignment.bottomCenter,
@@ -185,7 +185,7 @@ class BarChartWidget extends StatelessWidget {
           showingTooltipIndicators: [0],
         ),
         BarChartGroupData(
-          x: 3,
+          x: 4,
           barRods: [
             BarChartRodData(
               toY: 13,
@@ -195,10 +195,20 @@ class BarChartWidget extends StatelessWidget {
           showingTooltipIndicators: [0],
         ),
         BarChartGroupData(
-          x: 3,
+          x: 5,
           barRods: [
             BarChartRodData(
               toY: 10,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 6,
+          barRods: [
+            BarChartRodData(
+              toY: 0,
               gradient: _barsGradient,
             )
           ],

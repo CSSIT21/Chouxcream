@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:chouxcream_app/classes/caller.dart';
 import 'package:chouxcream_app/classes/theme.dart';
+import 'package:chouxcream_app/models/user/login_information.dart';
 import 'package:chouxcream_app/screens/core/index.dart';
 import 'package:chouxcream_app/screens/start/signup/index.dart';
 import 'package:chouxcream_app/widgets/custom_form_field.dart';
 import 'package:chouxcream_app/widgets/custom_rich_text.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -19,43 +22,65 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _obsecurePassword = true;
 
   String get email => _emailController.text.trim();
 
   String get password => _passwordController.text.trim();
 
   final RoundedLoadingButtonController _loginBtnController =
-      RoundedLoadingButtonController();
-
-  // * Login action
-  void _loginCall() async {
-    Caller.dio
-        .post("/account/login", data: {
-          "email": email,
-          "password": password,
-        })
-        .then((value) => debugPrint(value.toString()))
-        .catchError((error) => {
-
-    });
-    // Timer(const Duration(milliseconds: 2500), () {
-    //   _loginBtnController.success();
-    //   _loginNavigate();
-    // });
-  }
+  RoundedLoadingButtonController();
 
   void _loginNavigate() async {
+    // * Login action
+
     Timer(const Duration(milliseconds: 1500), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const CoreScreen()),
-          (Route<dynamic> route) =>
-              false); // Clear all navigation stack and then navigate
+              (Route<dynamic> route) =>
+          false); // Clear all navigation stack and then navigate
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    void loginCall() async {
+      Caller.dio.post("/account/login", data: {
+        "email": email,
+        "password": password,
+      }).then((response) async {
+        // * Parse response
+        final data = LoginInformation.fromJson(response.data["data"]);
+
+        // * Load shared preferences
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', data.token);
+
+        // * Set caller token value
+        Caller.setToken(data.token);
+
+        // * Display success feedback
+        _loginBtnController.success();
+
+        // * Navigate to screen
+        Timer(const Duration(milliseconds: 1000), () {
+          _loginNavigate();
+        });
+      }).onError((DioError error, _) {
+        // * Apply default error handling
+        Caller.handle(context, error);
+
+        // * Display error feedback
+        _loginBtnController.error();
+
+        // * Reset form
+        Timer(const Duration(milliseconds: 2500), () {
+          _loginBtnController.reset();
+        });
+      });
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,9 +121,16 @@ class _LoginFormState extends State<LoginForm> {
                 validator: (value) {
                   return null;
                 },
-                obsecureText: true,
+                obsecureText: _obsecurePassword,
                 suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility), onPressed: () {}),
+                    icon: Icon(_obsecurePassword
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _obsecurePassword = !_obsecurePassword;
+                      });
+                    }),
                 textInputType: TextInputType.text,
                 textInputAction: TextInputAction.done,
                 controller: _passwordController,
@@ -108,7 +140,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 Container(
                   margin:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: InkWell(
                     onTap: () {},
                     child: const Text(
@@ -128,7 +160,7 @@ class _LoginFormState extends State<LoginForm> {
             RoundedLoadingButton(
               color: ThemeConstant.colorPrimary,
               controller: _loginBtnController,
-              onPressed: _loginCall,
+              onPressed: loginCall,
               child: const Text('Login',
                   style: TextStyle(color: Colors.white, fontSize: 20)),
             ),

@@ -1,5 +1,15 @@
 package mysql
 
-import "chouxcream-backend/loaders/mysql/models"
+import (
+	"gorm.io/gorm"
 
-var UserModel = new(models.User)
+	"chouxcream-backend/loaders/mysql/models"
+)
+
+var UserModel *gorm.DB
+var PreferenceModel *gorm.DB
+
+func assignModel() {
+	UserModel = Gorm.Model(new(models.User))
+	PreferenceModel = Gorm.Model(new(models.Preference))
+}

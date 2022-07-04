@@ -10,6 +10,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
+	"chouxcream-backend/loaders/mysql/models"
 	"chouxcream-backend/utils/config"
 
 	loggerUtils "chouxcream-backend/utils/logger"
@@ -62,12 +63,14 @@ func Init() {
 		}
 	}
 
+	assignModel()
 	loggerUtils.Log(logrus.Debug, "INITIALIZED MYSQL CONNECTION")
 }
 
 func migrate() error {
 	if err := Gorm.AutoMigrate(
-		UserModel,
+		new(models.User),
+		new(models.Preference),
 	); err != nil {
 		return err
 	}

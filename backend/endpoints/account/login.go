@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/gofiber/fiber/v2"
+	"gorm.io/gorm"
 
 	"chouxcream-backend/loaders/mysql"
 	"chouxcream-backend/loaders/mysql/models"
@@ -41,7 +42,7 @@ func LoginHandler(c *fiber.Ctx) error {
 
 	// * Query user record
 	user := new(models.User)
-	if result := mysql.Gorm.Where("email = ?", body.Email).First(user); result.Error == sql.ErrNoRows {
+	if result := mysql.Gorm.Where("email = ?", body.Email).First(user); result.Error == gorm.ErrRecordNotFound {
 		return &response.GenericError{
 			Message: "User was not found",
 		}
@@ -53,7 +54,7 @@ func LoginHandler(c *fiber.Ctx) error {
 	}
 
 	// * Validate password
-	if !text.ComparePassword(*body.Password, *user.Password) {
+	if !text.ComparePassword(*user.Password, *body.Password) {
 		return &response.GenericError{
 			Message: "Incorrect password",
 		}
@@ -74,13 +75,13 @@ func LoginHandler(c *fiber.Ctx) error {
 	}
 
 	// * Fetch preference settings
-	preferenceCount := new(int)
-	if result := mysql.Gorm.Select("COUNT(id)").Where("id = ?", user.Id).First(preferenceCount); result.Error != nil && result.Error != sql.ErrNoRows {
+	var preferenceCount int
+	if result := mysql.PreferenceModel.Select("COUNT(user_id)").Where("user_id = ?", user.Id).First(&preferenceCount); result.Error != nil && result.Error != sql.ErrNoRows {
 		return &response.GenericError{
 			Message: "Unable to query user record",
 			Err:     result.Error,
 		}
 	}
 
-	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token, "setup": preferenceCount == nil}))
+	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token, "setup": preferenceCount == 0}))
 }
