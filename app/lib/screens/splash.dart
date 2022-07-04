@@ -2,8 +2,11 @@ import 'dart:async' as async;
 
 import 'package:chouxcream_app/classes/caller.dart';
 import 'package:chouxcream_app/classes/theme.dart';
+import 'package:chouxcream_app/models/user/login_information.dart';
 import 'package:chouxcream_app/screens/core/index.dart';
+import 'package:chouxcream_app/screens/start/preference/preference_screen.dart';
 import 'package:chouxcream_app/screens/start/welcome/index.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,24 +25,44 @@ class _SplashScreenState extends State<SplashScreen> {
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('token') ?? "";
 
+    if (token == "") {
+      return const WelcomeScreen();
+    }
+
     // Set caller token value
     Caller.setToken(token);
 
-    // Navigate to next screen
-    async.Timer(const Duration(milliseconds: 2500), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => token == ""
-                  ? const WelcomeScreen()
-                  : const CoreScreen())); // Use pushReplacement for clear backstack.
-    });
+    try {
+      // * Call launch information endpoint
+      final response = await Caller.dio.get("/profile/launch");
+
+      // * Parse response
+      final data = LoginInformation.fromJson(response.data["data"]);
+      if (data.preferenceSettled) {
+        return const CoreScreen();
+      } else {
+        return const PreferenceScreen();
+      }
+    } on DioError catch (e) {
+      if (mounted) {
+        Caller.handle(context, e);
+        return const WelcomeScreen();
+      }
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    navigate();
+
+    // Timer
+    async.Timer(const Duration(milliseconds: 2500), () async {
+      final navi = await navigate();
+      if (mounted) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => navi)); // Use pushReplacement for clear backstack.
+      }
+    });
   }
 
   @override
@@ -53,10 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [
-                        ThemeConstant.colorSecondaryDark,
-                        ThemeConstant.colorPrimary
-                      ],
+                      colors: [ThemeConstant.colorSecondaryDark, ThemeConstant.colorPrimary],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       tileMode: TileMode.mirror,
@@ -65,10 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: const Center(
                   child: Text(
                     "CHOUXCREAM",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32),
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 32),
                   ),
                 ),
               ),

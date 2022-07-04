@@ -1,10 +1,11 @@
 import 'dart:async';
 
+import 'package:chouxcream_app/classes/caller.dart';
 import 'package:chouxcream_app/classes/theme.dart';
-import 'package:chouxcream_app/screens/start/information/index.dart';
 import 'package:chouxcream_app/screens/start/login/index.dart';
 import 'package:chouxcream_app/widgets/custom_form_field.dart';
 import 'package:chouxcream_app/widgets/custom_rich_text.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -16,35 +17,42 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
-  final _userName = TextEditingController();
+  final _loginBtnController = RoundedLoadingButtonController();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isHidden = true;
 
-  String get userName => _userName.text.trim();
+  String get name => _nameController.text.trim();
 
-  String get rmail => _emailController.text.trim();
+  String get email => _emailController.text.trim();
 
   String get password => _passwordController.text.trim();
-  final RoundedLoadingButtonController _loginBtnController =
-      RoundedLoadingButtonController();
-  final _formkey = GlobalKey<FormState>();
 
-  // Just a mock function to simulating network activity delay
-  void _signupCall() async {
-    Timer(const Duration(milliseconds: 2500), () {
+  void signupCall() async {
+    Caller.dio.post("/account/signup", data: {
+      "name": name,
+      "email": email,
+      "password": password,
+    }).then((response) async {
+      // * Display success message
       _loginBtnController.success();
-      _signupNavigate();
-    });
-  }
 
-  void _signupNavigate() async {
-    Timer(const Duration(milliseconds: 1500), () {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const InformationScreen()),
-          (Route<dynamic> route) =>
-              false); // Clear all navigation stack and then navigate
+      // * Navigate to login screen
+      Timer(const Duration(milliseconds: 1000), () {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+      });
+    }).onError((DioError error, _) {
+      // * Apply default error handling
+      Caller.handle(context, error);
+
+      // * Display error feedback
+      _loginBtnController.error();
+
+      // * Reset form
+      Timer(const Duration(milliseconds: 2500), () {
+        _loginBtnController.reset();
+      });
     });
   }
 
@@ -65,8 +73,8 @@ class _SignupFormState extends State<SignupForm> {
           height: 16,
         ),
         CustomFormField(
-            headingText: "Username",
-            hintText: "Username",
+            headingText: "Name",
+            hintText: "Name",
             suffixText: "",
             fontsize: 14,
             fontweight: FontWeight.w500,
@@ -77,7 +85,7 @@ class _SignupFormState extends State<SignupForm> {
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.text,
             textInputAction: TextInputAction.done,
-            controller: _userName,
+            controller: _nameController,
             maxLines: 1),
         const SizedBox(
           height: 16,
@@ -123,21 +131,19 @@ class _SignupFormState extends State<SignupForm> {
             controller: _passwordController,
             maxLines: 1),
         const SizedBox(
-          height: 70,
+          height: 24,
         ),
         RoundedLoadingButton(
           controller: _loginBtnController,
-          onPressed: _signupCall,
+          onPressed: signupCall,
           color: ThemeConstant.colorPrimary,
-          child: const Text('Sign Up',
-              style: TextStyle(color: Colors.white, fontSize: 20)),
+          child: const Text('Sign Up', style: TextStyle(color: Colors.white, fontSize: 20)),
         ),
         CustomRichText(
             description: "Already have an account?",
             text: "Login here",
             onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
             })
       ],
     );

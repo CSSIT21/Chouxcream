@@ -26,9 +26,9 @@ class _EditProfileState extends State<EditProfile> {
   final _confirmPasswordController = TextEditingController();
   final _editBtnController = RoundedLoadingButtonController();
   bool isSubmit = false;
-  User user = User(name: '', email: '', avatarUrl: '');
+  User user = User(name: '', email: '', password: "", avatarUrl: '');
 
-  File? _imageFile = null;
+  File? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -156,54 +156,55 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("New Password"),
-                        TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter password';
-                            } else if (value.length < 8) {
-                              return 'Your password length is incorrect';
-                            }
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: ThemeConstant.colorPrimary))),
-                        ),
-                        const SizedBox(
-                          height: 18,
-                        ),
-                        const Text("Confirm New Password"),
-                        TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter confirm password';
-                            } else if (_passwordController.text !=
-                                _confirmPasswordController.text) {
-                              return 'Confirm password is not match';
-                            }
-                          },
-                          controller: _confirmPasswordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: ThemeConstant.colorPrimary))),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ]
-                    )
-                  ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 45, vertical: 10),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("New Password"),
+                            TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter password';
+                                } else if (value.length < 8) {
+                                  return 'Your password length is incorrect';
+                                }
+                              },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              controller: _passwordController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: ThemeConstant.colorPrimary))),
+                            ),
+                            const SizedBox(
+                              height: 18,
+                            ),
+                            const Text("Confirm New Password"),
+                            TextFormField(
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter confirm password';
+                                } else if (_passwordController.text !=
+                                    _confirmPasswordController.text) {
+                                  return 'Confirm password is not match';
+                                }
+                              },
+                              controller: _confirmPasswordController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: ThemeConstant.colorPrimary))),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                          ])),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: Container(

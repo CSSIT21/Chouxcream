@@ -18,14 +18,14 @@ class Caller {
 
   static handle(BuildContext context, DioError error) {
     if (error.response == null) {
-      FlutterPlatformAlert.showAlert(
-          windowTitle: 'Something went wrong', text: error.message);
+      FlutterPlatformAlert.showAlert(windowTitle: 'Something went wrong', text: error.message);
       return;
     }
 
     SnackBar snackBar = SnackBar(
       behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.all(15),
+      backgroundColor: const Color(0xffB00020),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,17 +34,33 @@ class Caller {
           error.response!.data["error"] == null
               ? Container()
               : Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(error.response!.data["error"]),
-                ),
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
+              error.response!.data["error"],
+              style: const TextStyle(color: Colors.white70),
+            ),
+          ),
         ],
-      ),
-      action: SnackBarAction(
-        label: 'OK',
-        onPressed: () {},
       ),
     );
 
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  static error(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.all(15),
+      backgroundColor: const Color(0xffB00020),
+      content: Text(message),
+    ));
+  }
+
+  static inform(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.all(15),
+      content: Text(message),
+    ));
   }
 }

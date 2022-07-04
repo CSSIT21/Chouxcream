@@ -1,9 +1,9 @@
 package enum
 
-type Gender rune
+type Gender string
 
 const (
-	GenderMale        Gender = 'M'
-	GenderFemale      Gender = 'F'
-	GenderUnspecified Gender = 'U'
+	GenderMale        Gender = "M"
+	GenderFemale      Gender = "F"
+	GenderUnspecified Gender = "U"
 )

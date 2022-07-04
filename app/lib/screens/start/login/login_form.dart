@@ -4,6 +4,7 @@ import 'package:chouxcream_app/classes/caller.dart';
 import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/models/user/login_information.dart';
 import 'package:chouxcream_app/screens/core/index.dart';
+import 'package:chouxcream_app/screens/start/preference/preference_screen.dart';
 import 'package:chouxcream_app/screens/start/signup/index.dart';
 import 'package:chouxcream_app/widgets/custom_form_field.dart';
 import 'package:chouxcream_app/widgets/custom_rich_text.dart';
@@ -20,6 +21,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final _loginBtnController = RoundedLoadingButtonController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obsecurePassword = true;
@@ -28,59 +30,48 @@ class _LoginFormState extends State<LoginForm> {
 
   String get password => _passwordController.text.trim();
 
-  final RoundedLoadingButtonController _loginBtnController =
-  RoundedLoadingButtonController();
+  void loginCall() async {
+    Caller.dio.post("/account/login", data: {
+      "email": email,
+      "password": password,
+    }).then((response) async {
+      // * Parse response
+      final data = LoginInformation.fromJson(response.data["data"]);
 
-  void _loginNavigate() async {
-    // * Login action
+      // * Load shared preferences
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', data.token);
 
-    Timer(const Duration(milliseconds: 1500), () {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const CoreScreen()),
-              (Route<dynamic> route) =>
-          false); // Clear all navigation stack and then navigate
+      // * Set caller token value
+      Caller.setToken(data.token);
+
+      // * Display success feedback
+      _loginBtnController.success();
+
+      // * Navigate to screen
+      Timer(const Duration(milliseconds: 1000), () {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => data.preferenceSettled ? const PreferenceScreen() : const CoreScreen()),
+            (Route<dynamic> route) => false); // Clear all navigation stack and then navigate
+      });
+    }).onError((DioError error, _) {
+      // * Apply default error handling
+      Caller.handle(context, error);
+
+      // * Display error feedback
+      _loginBtnController.error();
+
+      // * Reset form
+      Timer(const Duration(milliseconds: 2500), () {
+        _loginBtnController.reset();
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    void loginCall() async {
-      Caller.dio.post("/account/login", data: {
-        "email": email,
-        "password": password,
-      }).then((response) async {
-        // * Parse response
-        final data = LoginInformation.fromJson(response.data["data"]);
-
-        // * Load shared preferences
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setString('token', data.token);
-
-        // * Set caller token value
-        Caller.setToken(data.token);
-
-        // * Display success feedback
-        _loginBtnController.success();
-
-        // * Navigate to screen
-        Timer(const Duration(milliseconds: 1000), () {
-          _loginNavigate();
-        });
-      }).onError((DioError error, _) {
-        // * Apply default error handling
-        Caller.handle(context, error);
-
-        // * Display error feedback
-        _loginBtnController.error();
-
-        // * Reset form
-        Timer(const Duration(milliseconds: 2500), () {
-          _loginBtnController.reset();
-        });
-      });
-    }
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,9 +114,7 @@ class _LoginFormState extends State<LoginForm> {
                 },
                 obsecureText: _obsecurePassword,
                 suffixIcon: IconButton(
-                    icon: Icon(_obsecurePassword
-                        ? Icons.visibility
-                        : Icons.visibility_off),
+                    icon: Icon(_obsecurePassword ? Icons.visibility : Icons.visibility_off),
                     onPressed: () {
                       setState(() {
                         _obsecurePassword = !_obsecurePassword;
@@ -139,15 +128,12 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  margin:
-                  const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: InkWell(
                     onTap: () {},
                     child: const Text(
                       "Forgot Password?",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 248, 193, 110),
-                          fontWeight: FontWeight.w500),
+                      style: TextStyle(color: Color.fromARGB(255, 248, 193, 110), fontWeight: FontWeight.w500),
                     ),
                   ),
                 )
@@ -161,17 +147,13 @@ class _LoginFormState extends State<LoginForm> {
               color: ThemeConstant.colorPrimary,
               controller: _loginBtnController,
               onPressed: loginCall,
-              child: const Text('Login',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20)),
             ),
             CustomRichText(
                 description: "Don't have an account?",
                 text: "Sign Up",
                 onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignupScreen()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignupScreen()));
                 })
           ],
         )

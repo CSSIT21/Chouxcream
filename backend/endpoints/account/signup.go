@@ -43,10 +43,9 @@ func SignupHandler(c *fiber.Ctx) error {
 
 	// * Register user record
 	user := &models.User{
-		Firstname: body.Firstname,
-		Lastname:  body.Lastname,
-		Email:     body.Email,
-		Password:  &hashedPassword,
+		Name:     body.Name,
+		Email:    body.Email,
+		Password: &hashedPassword,
 	}
 
 	if result := mysql.Gorm.Create(user); result.Error != nil {

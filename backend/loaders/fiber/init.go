@@ -50,7 +50,7 @@ func Init() {
 	apiGroup.Use(middlewares.Cors)
 	apiGroup.Use(middlewares.Recover)
 
-	endpoints.Init(apiGroup)
+	endpoints.Register(apiGroup)
 
 	// Register not found handler
 	app.Use(notfoundHandler)

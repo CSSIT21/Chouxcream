@@ -11,7 +11,7 @@ type Preference struct {
 	User         *User        `gorm:"foreignKey:UserId"`
 	Gender       *enum.Gender `gorm:"type:ENUM('M', 'F', 'U'); not null"`
 	Birthdate    *time.Time   `gorm:"not null"`
-	Height       int          `gorm:"not null"`
-	Weight       int          `gorm:"not null"`
-	TargetWeight int          `gorm:"not null"`
+	Height       *float64     `gorm:"not null"`
+	Weight       *float64     `gorm:"not null"`
+	TargetWeight *float64     `gorm:"not null"`
 }

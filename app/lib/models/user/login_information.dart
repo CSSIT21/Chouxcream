@@ -4,13 +4,15 @@ part 'login_information.g.dart';
 
 @JsonSerializable()
 class LoginInformation {
+  @JsonKey(name: 'token')
   final String token;
-  final bool setup;
 
-  LoginInformation({required this.token, required this.setup});
+  @JsonKey(name: 'preference_settled')
+  final bool preferenceSettled;
 
-  factory LoginInformation.fromJson(Map<String, dynamic> json) =>
-      _$LoginInformationFromJson(json);
+  LoginInformation({required this.token, required this.preferenceSettled});
+
+  factory LoginInformation.fromJson(Map<String, dynamic> json) => _$LoginInformationFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginInformationToJson(this);
 }

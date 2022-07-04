@@ -1,9 +1,7 @@
 import 'package:chouxcream_app/screens/splash.dart' show SplashScreen;
-import 'package:chouxcream_app/screens/start/information/index.dart';
-import 'package:chouxcream_app/screens/start/information/second_index.dart';
 import 'package:chouxcream_app/screens/start/login/index.dart';
-import 'package:chouxcream_app/screens/start/welcome/index.dart'
-    show WelcomeScreen;
+import 'package:chouxcream_app/screens/start/preference/preference_screen.dart';
+import 'package:chouxcream_app/screens/start/welcome/index.dart' show WelcomeScreen;
 import 'package:flutter/material.dart' as material;
 
 class RouteConstant {
@@ -12,8 +10,7 @@ class RouteConstant {
       '/': (_) => const SplashScreen(),
       '/welcome': (_) => const WelcomeScreen(),
       '/login': (_) => const LoginScreen(),
-      '/info': (_) => const InformationScreen(),
-      '/second_info': (_) => const SecondInfoScreen(),
+      '/preference': (_) => const PreferenceScreen(),
     };
   }
 }

@@ -1,4 +1,3 @@
-import 'package:chouxcream_app/widgets/info_button.dart';
 import 'package:flutter/material.dart';
 
 import '../classes/theme.dart';
@@ -23,9 +22,7 @@ class CardMenu extends StatelessWidget {
               child: Container(
                 height: 8.0,
                 width: 80.0,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.all(Radius.circular(8))),
               ),
             ),
             Padding(
@@ -57,12 +54,9 @@ class CardMenu extends StatelessWidget {
                 height: 30,
                 child: OutlinedButton(
                   style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                          ThemeConstant.pillBorderShape),
-                      side: MaterialStateProperty.all(BorderSide(
-                          color: ThemeConstant.colorPrimary,
-                          width: 1.2,
-                          style: BorderStyle.solid))),
+                      shape: MaterialStateProperty.all(ThemeConstant.pillBorderShape),
+                      side: MaterialStateProperty.all(
+                          BorderSide(color: ThemeConstant.colorPrimary, width: 1.2, style: BorderStyle.solid))),
                   onPressed: () {
                     //setState(() {
                     //isSubmit - true;
@@ -90,8 +84,8 @@ class CardMenu extends StatelessWidget {
 class Carb extends StatelessWidget {
   final String carb;
   final String value;
-  const Carb({Key? key, required this.carb, required this.value})
-      : super(key: key);
+
+  const Carb({Key? key, required this.carb, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,12 @@
 package account
 
 import (
-	"database/sql"
-
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
 
 	"chouxcream-backend/loaders/mysql"
 	"chouxcream-backend/loaders/mysql/models"
+	"chouxcream-backend/procedures/account"
 	"chouxcream-backend/types/common"
 	"chouxcream-backend/types/payload"
 	"chouxcream-backend/types/response"
@@ -74,14 +73,11 @@ func LoginHandler(c *fiber.Ctx) error {
 		}
 	}
 
-	// * Fetch preference settings
-	var preferenceCount int
-	if result := mysql.PreferenceModel.Select("COUNT(user_id)").Where("user_id = ?", user.Id).First(&preferenceCount); result.Error != nil && result.Error != sql.ErrNoRows {
-		return &response.GenericError{
-			Message: "Unable to query user record",
-			Err:     result.Error,
-		}
+	// * Get preference settled
+	preferenceSettled, err := account.GetPreferenceSettled(*user.Id)
+	if err != nil {
+		return err
 	}
 
-	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token, "setup": preferenceCount == 0}))
+	return c.JSON(response.NewResponse("Successfully logged in", map[string]any{"token": token, "preference_settled": preferenceSettled}))
 }

@@ -17,7 +17,7 @@ class MoreFragment extends StatefulWidget {
 
 class _MoreFragmentState extends State<MoreFragment> {
   late SharedPreferences prefs;
-  User user = User(name: '', email: '', avatarUrl: '');
+  User user = User(name: '', email: '', password: "", avatarUrl: '');
 
   void initState() {
     _readJson();
@@ -44,7 +44,10 @@ class _MoreFragmentState extends State<MoreFragment> {
       await Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => EditProfile(readJson: _readJson, userInfo: user,))).then((_) => setState(() {}));
+              builder: (context) => EditProfile(
+                    readJson: _readJson,
+                    userInfo: user,
+                  ))).then((_) => setState(() {}));
     }
 
     return Container(
@@ -105,7 +108,11 @@ class _MoreFragmentState extends State<MoreFragment> {
                   context: context,
                   builder: (context) => AlertDialog(
                     alignment: Alignment.center,
-                    title: const Icon(Icons.warning_rounded, color: Colors.red, size: 60.0,),
+                    title: const Icon(
+                      Icons.warning_rounded,
+                      color: Colors.red,
+                      size: 60.0,
+                    ),
                     content: const Text('Are you sure, you want to logout?'),
                     actionsAlignment: MainAxisAlignment.spaceEvenly,
                     actions: [
@@ -119,13 +126,16 @@ class _MoreFragmentState extends State<MoreFragment> {
                       FlatButton(
                         textColor: Colors.black,
                         onPressed: () {
-                          deleteUserData();                                                        
+                          deleteUserData();
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const LoginScreen()));
                         },
-                        child: const Text('LOG OUT', style: TextStyle(color: Colors.red),),
+                        child: const Text(
+                          'LOG OUT',
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
                     ],
                   ),
