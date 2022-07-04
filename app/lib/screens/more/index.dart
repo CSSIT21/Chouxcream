@@ -1,7 +1,9 @@
 import 'package:chouxcream_app/models/user/user_information.dart';
 import 'package:chouxcream_app/screens/more/edit_info/edit_info.dart';
 import 'package:chouxcream_app/screens/more/help_center/help_center.dart';
+import 'package:chouxcream_app/screens/more/setting/setting.dart';
 import 'package:chouxcream_app/screens/more/title.dart';
+import 'package:chouxcream_app/screens/start/login/index.dart';
 import 'package:chouxcream_app/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -94,7 +96,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                 ],
               ),
             ),
-            titleBar(title: "Setting", routes: HelpCenter()),
+            titleBar(title: "Setting Informations", routes: Setting()),
             titleBar(title: "Help Center", routes: HelpCenter()),
             titleBar(title: "Achivement", routes: HelpCenter()),
             InkWell(
@@ -105,7 +107,6 @@ class _MoreFragmentState extends State<MoreFragment> {
                     alignment: Alignment.center,
                     title: const Icon(Icons.warning_rounded, color: Colors.red, size: 60.0,),
                     content: const Text('Are you sure, you want to logout?'),
-                    
                     actionsAlignment: MainAxisAlignment.spaceEvenly,
                     actions: [
                       FlatButton(
@@ -119,10 +120,10 @@ class _MoreFragmentState extends State<MoreFragment> {
                         textColor: Colors.black,
                         onPressed: () {
                           deleteUserData();                                                        
-                          // Navigator.pushReplacement(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => LoginScreen()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()));
                         },
                         child: const Text('LOG OUT', style: TextStyle(color: Colors.red),),
                       ),

@@ -10,5 +10,5 @@ func Init(router fiber.Router) {
 	// * Account
 	account := router.Group("account/")
 	account.Post("login", accountEndpoint.LoginHandler)
-	account.Post("register", accountEndpoint.RegisterHandler)
+	account.Post("register", accountEndpoint.SignupHandler)
 }

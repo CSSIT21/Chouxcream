@@ -25,9 +25,15 @@ class _HelpCenterState extends State<HelpCenter> {
             canTapOnHeader: true,
             value: q.id,
             headerBuilder: (bc, status) {
-              return Text(q.question);
+              return Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(q.question),
+              );
             },
-            body: Text(q.answer))
+            body: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(q.answer),
+            ))
             ).toList(),
           expansionCallback: (i, isExpanded) =>
               setState(() => _questions[i].isExpanded = !isExpanded),

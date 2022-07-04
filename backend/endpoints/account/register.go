@@ -10,20 +10,20 @@ import (
 	"chouxcream-backend/utils/text"
 )
 
-// RegisterHandler
-// @ID account.register.post
+// SignupHandler
+// @ID account.signup.post
 // @Summary Register
 // @Description Register
 // @Tags account
 // @Accept json
 // @Produce json
-// @Param payload body payload.RegisterInformation true "payload.RegisterInformation"
+// @Param payload body payload.SignupInformation true "payload.SignupInformation"
 // @Success 200 {object} response.InfoResponse
 // @Failure 400 {object} response.ErrorResponse
-// @Router /account/register [post]
-func RegisterHandler(c *fiber.Ctx) error {
+// @Router /account/signup [post]
+func SignupHandler(c *fiber.Ctx) error {
 	// * Parse body
-	body := new(payload.RegisterInformation)
+	body := new(payload.SignupInformation)
 	if err := c.BodyParser(&body); err != nil {
 		return &response.GenericError{
 			Message: "Unable to parse body",

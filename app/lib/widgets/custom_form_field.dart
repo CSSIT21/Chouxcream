@@ -58,7 +58,7 @@ class CustomFormField extends StatelessWidget {
             right: 20,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFEBEBEB),
+            color: const Color(0xFFEBEBEB),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
