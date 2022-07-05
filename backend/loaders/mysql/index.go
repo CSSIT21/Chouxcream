@@ -64,6 +64,7 @@ func Init() {
 	}
 
 	assignModel()
+	preset()
 	loggerUtils.Log(logrus.Debug, "INITIALIZED MYSQL CONNECTION")
 }
 
@@ -71,6 +72,8 @@ func migrate() error {
 	if err := Gorm.AutoMigrate(
 		new(models.User),
 		new(models.Preference),
+		new(models.Menu),
+		new(models.Record),
 	); err != nil {
 		return err
 	}

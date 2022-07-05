@@ -29,21 +29,17 @@ class TodayMenu extends StatelessWidget {
             context: context,
             builder: (context) => AlertDialog(
                   alignment: Alignment.center,
-                  title: Text("Custom Calories"),
+                  title: const Text("Custom Calories"),
                   content: TextField(
                     onChanged: (value) {
                       valueText = value;
                     },
                     controller: controller,
-                    decoration: InputDecoration(hintText: "Enter Calories"),
+                    decoration: const InputDecoration(hintText: "Enter Calories"),
                   ),
                   actions: <Widget>[
-                    FlatButton(
-                        onPressed: onPressedone,
-                        child: Text("CANCLE")),
-                    FlatButton(
-                        onPressed: onPressedtwo,
-                        child: Text("OK"))
+                    FlatButton(onPressed: onPressedone, child: Text("CANCLE")),
+                    FlatButton(onPressed: onPressedtwo, child: Text("OK"))
                   ],
                 ));
       },
@@ -71,13 +67,9 @@ class TodayMenu extends StatelessWidget {
                 ),
                 Text(
                   meal,
-                  style: const TextStyle(
-                      fontSize: 16, color: Color.fromARGB(255, 124, 120, 120)),
+                  style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 124, 120, 120)),
                 ),
-                Text(cal,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 124, 120, 120)))
+                Text(cal, style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 124, 120, 120)))
               ],
             ),
             const Spacer(),

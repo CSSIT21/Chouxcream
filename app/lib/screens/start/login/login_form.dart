@@ -53,7 +53,7 @@ class _LoginFormState extends State<LoginForm> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-                builder: (context) => data.preferenceSettled ? const PreferenceScreen() : const CoreScreen()),
+                builder: (context) => data.preferenceSettled ? const CoreScreen() : const PreferenceScreen()),
             (Route<dynamic> route) => false); // Clear all navigation stack and then navigate
       });
     }).onError((DioError error, _) {

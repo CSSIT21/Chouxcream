@@ -53,8 +53,8 @@ class _SecondPreferenceScreenState extends State<SecondPreferenceScreen> {
       "weight": weight,
       "desired_weight": desireWeight,
     }).then((response) {
-      Caller.inform(context, response.data["message"]);
       progressDialog.dismiss();
+      Caller.inform(context, response.data["message"]);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const CoreScreen()),

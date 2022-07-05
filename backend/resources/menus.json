@@ -1,0 +1,210 @@
+[
+	{
+		"name": "Steak",
+		"image_url": "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3RlYWt8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 179,
+		"num_carbohydrate": 0,
+		"num_protein": 26,
+		"num_fat": 7.6
+	},
+	{
+		"name": "ข้าวผัด",
+		"image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJpZWQlMjByaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 352,
+		"num_carbohydrate": 55,
+		"num_protein": 16,
+		"num_fat": 8
+	},
+	{
+		"name": "Ramen",
+		"image_url": "https://images.unsplash.com/photo-1623341214825-9f4f963727da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 680,
+		"num_carbohydrate": 70,
+		"num_protein": 18,
+		"num_fat": 24
+	},
+	{
+		"name": "ข้าวแกงกะหรี่หมูทอด",
+		"image_url": "https://chefoldschool.com/wp-content/uploads/2020/05/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B9%81%E0%B8%81%E0%B8%87%E0%B8%81%E0%B8%B0%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B8%97%E0%B8%AD%E0%B8%94.jpg",
+		"num_calorie": 1119,
+		"num_carbohydrate": 300,
+		"num_protein": 50,
+		"num_fat": 65
+	},
+	{
+		"name": "Beef burger",
+		"image_url": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmVlZiUyMGJ1cmdlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 650,
+		"num_carbohydrate": 26,
+		"num_protein": 31,
+		"num_fat": 25
+	},
+	{
+		"name": "ข้าวซอยไก่",
+		"image_url": "https://images.unsplash.com/photo-1646850148817-c3a5e8a35fd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8a2hhbyUyMHNvaXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 462,
+		"num_carbohydrate": 27,
+		"num_protein": 17,
+		"num_fat": 32
+	},
+	{
+		"name": "ผัดไทย",
+		"image_url": "https://images.unsplash.com/photo-1637806930600-37fa8892069d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFkJTIwdGhhaXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 717,
+		"num_carbohydrate": 73,
+		"num_protein": 23,
+		"num_fat": 37
+	},
+	{
+		"name": "ข้าวกระเพราหมูกรอบ",
+		"image_url": "https://bellefightfat.com/wp-content/uploads/2020/11/9743.jpg",
+		"num_calorie": 754,
+		"num_carbohydrate": 50.5,
+		"num_protein": 14.3,
+		"num_fat": 49
+	},
+	{
+		"name": "ข้าวหมูกระเทียม",
+		"image_url": "https://fit-d.com/uploads/food/9653ce179d5374cec43d920df4eef2af.jpg",
+		"num_calorie": 525,
+		"num_carbohydrate": 300,
+		"num_protein": 50,
+		"num_fat": 65
+	},
+	{
+		"name": "Spaghetti carbonara",
+		"image_url": "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3BhZ2hldHRpJTIwY2FyYm9uYXJhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 581,
+		"num_carbohydrate": 36,
+		"num_protein": 16,
+		"num_fat": 48
+	},
+	{
+		"name": "Pizza",
+		"image_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 300,
+		"num_carbohydrate": 35,
+		"num_protein": 13,
+		"num_fat": 12
+	},
+	{
+		"name": "Chicken Caesar salad",
+		"image_url": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Flc2FyJTIwc2FsYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 230,
+		"num_carbohydrate": 8,
+		"num_protein": 16,
+		"num_fat": 16
+	},
+	{
+		"name": "Cappuccino",
+		"image_url": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aWNlJTIwY2FwcHVjY2lub3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 274,
+		"num_carbohydrate": 39.1,
+		"num_protein": 4.8,
+		"num_fat": 11.1
+	},
+	{
+		"name": "Late",
+		"image_url": "https://images.unsplash.com/photo-1566704283545-9fc652ea891b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aWNlJTIwbGF0ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 133,
+		"num_carbohydrate": 13.3,
+		"num_protein": 8,
+		"num_fat": 4.7
+	},
+	{
+		"name": "Green tea",
+		"image_url": "https://i.pinimg.com/236x/3c/d1/03/3cd10393772f78702ab3b287c5aa19bf.jpg",
+		"num_calorie": 245,
+		"num_carbohydrate": 39.7,
+		"num_protein": 2.9,
+		"num_fat": 8.3
+	},
+	{
+		"name": "ามุก",
+		"image_url": "https://images.unsplash.com/photo-1558857563-b371033873b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnViYmxlJTIwdGVhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 330,
+		"num_carbohydrate": 75,
+		"num_protein": 4,
+		"num_fat": 4
+	},
+	{
+		"name": "Cupcake",
+		"image_url": "https://images.unsplash.com/photo-1599785209796-786432b228bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y3VwY2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 200,
+		"num_carbohydrate": 35,
+		"num_protein": 2,
+		"num_fat": 6
+	},
+	{
+		"name": "โรตี",
+		"image_url": "https://i.pinimg.com/236x/4e/ae/64/4eae6480eb8cc3f850c276e74af70e6e.jpg",
+		"num_calorie": 192,
+		"num_carbohydrate": 22,
+		"num_protein": 2,
+		"num_fat": 10
+	},
+	{
+		"name": "Banana & Nutella crepe",
+		"image_url": "https://images.unsplash.com/photo-1584278860047-22db9ff82bed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnJlbmNoJTIwY3JlcGV8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 390,
+		"num_carbohydrate": 68,
+		"num_protein": 7,
+		"num_fat": 11
+	},
+	{
+		"name": "ข้าวมันไก่",
+		"image_url": "https://i.pinimg.com/236x/f1/76/67/f176670465fb98264ac10f51f463e6ad.jpg",
+		"num_calorie": 693,
+		"num_carbohydrate": 53,
+		"num_protein": 26,
+		"num_fat": 22
+	},
+	{
+		"name": "สุกี้น้ำ",
+		"image_url": "https://i.pinimg.com/236x/e3/c8/f0/e3c8f0a0a91b853ada1b0b8d42ca38d6.jpg",
+		"num_calorie": 261,
+		"num_carbohydrate": 41,
+		"num_protein": 12,
+		"num_fat": 5.5
+	},
+	{
+		"name": "Tteokbokki",
+		"image_url": "https://i.pinimg.com/236x/b3/0a/64/b30a645ddcf2bfc498cefe37be166757.jpg",
+		"num_calorie": 980,
+		"num_carbohydrate": 174,
+		"num_protein": 32,
+		"num_fat": 18
+	},
+	{
+		"name": "Apple",
+		"image_url": "https://images.unsplash.com/photo-1589217157232-464b505b197f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YXBwbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 52,
+		"num_carbohydrate": 14,
+		"num_protein": 0,
+		"num_fat": 0
+	},
+	{
+		"name": "Cheese cake",
+		"image_url": "https://images.unsplash.com/photo-1567624725806-227866a3f784?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2hlZXNlJTIwY2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 320,
+		"num_carbohydrate": 17,
+		"num_protein": 4,
+		"num_fat": 22
+	},
+	{
+		"name": "ข้าวไข่เจียว",
+		"image_url": "https://i.pinimg.com/236x/f9/9e/d7/f99ed7cecb7cb0b1e066734383720e9f.jpg",
+		"num_calorie": 445,
+		"num_carbohydrate": 300,
+		"num_protein": 50,
+		"num_fat": 65
+	},
+	{
+		"name": "Ice cream",
+		"image_url": "https://images.unsplash.com/photo-1562790879-dfde82829db0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aWNlJTIwY3JlYW18ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
+		"num_calorie": 250,
+		"num_carbohydrate": 25,
+		"num_protein": 4,
+		"num_fat": 10
+	}
+]
