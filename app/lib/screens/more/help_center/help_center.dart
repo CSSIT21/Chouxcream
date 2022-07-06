@@ -9,9 +9,9 @@ class HelpCenter extends StatefulWidget {
 
 class _HelpCenterState extends State<HelpCenter> {
   final List<Questions> _questions = [
-    Questions(id: 1,question: 'q1', answer: 'a1', isExpanded: false),
-    Questions(id: 2,question: 'q2', answer: 'a2', isExpanded: false),
-    Questions(id: 3,question: 'q3', answer: 'a3', isExpanded: false),
+    Questions(id: 1,question: 'What is CHOUXCREAM', answer: 'Ullamco voluptate ut qui dolore aliquip sunt laborum id cillum ut irure aliqua duis.', isExpanded: false),
+    Questions(id: 2,question: 'How to add menu?', answer: 'Et eiusmod minim officia deserunt aute proident deserunt et exercitation nisi.', isExpanded: false),
+    Questions(id: 3,question: 'How to change password?', answer: 'Ut cupidatat fugiat incididunt laborum veniam qui sint aliquip tempor cillum officia proident excepteur irure.', isExpanded: false),
   ];
 
   @override

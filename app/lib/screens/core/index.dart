@@ -49,8 +49,8 @@ class _CoreScreenState extends State<CoreScreen> with TickerProviderStateMixin {
         labels: const ["Today", "Progress", "More"],
         icons: const [
           //TODO: Change logo
-          Icons.dashboard,
           Icons.home,
+          Icons.dashboard,
           Icons.people_alt,
         ],
         tabSize: 50,
