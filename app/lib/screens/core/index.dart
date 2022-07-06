@@ -1,7 +1,7 @@
 import 'package:chouxcream_app/classes/manifest.dart';
 import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/more/index.dart';
-import 'package:chouxcream_app/screens/progress/index.dart';
+import 'package:chouxcream_app/screens/progress/progress_screen.dart';
 import 'package:chouxcream_app/screens/record/record_screen.dart';
 import 'package:chouxcream_app/screens/today/today_screen.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +93,7 @@ class _CoreScreenState extends State<CoreScreen> with TickerProviderStateMixin {
         controller: _tabController,
         children: [
           TodayScreen(channel: reloadChannel),
-          const ProgressFragment(),
+          const ProgressScreen(),
           const MoreFragment(),
         ],
       ),

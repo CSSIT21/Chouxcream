@@ -50,7 +50,7 @@ func SetPreferenceHandler(c *fiber.Ctx) error {
 		TargetWeight: body.DesiredWeight,
 	}
 
-	if result := mysql.Gorm.Save(record); result.Error != nil {
+	if result := mysql.Gorm.Updates(record); result.Error != nil {
 		return &response.GenericError{
 			Message: "Unable to update user preference",
 			Err:     result.Error,

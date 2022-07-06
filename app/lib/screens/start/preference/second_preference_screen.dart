@@ -10,8 +10,17 @@ import 'package:ndialog/ndialog.dart';
 class SecondPreferenceScreen extends StatefulWidget {
   final String selectedGender;
   final DateTime selectedBirthDate;
+  final double selectedHeight;
+  final double selectedWeight;
+  final double selectedDesireWeight;
 
-  const SecondPreferenceScreen({Key? key, required this.selectedGender, required this.selectedBirthDate})
+  const SecondPreferenceScreen(
+      {Key? key,
+      required this.selectedGender,
+      required this.selectedBirthDate,
+      required this.selectedHeight,
+      required this.selectedWeight,
+      required this.selectedDesireWeight})
       : super(key: key);
 
   @override
@@ -22,6 +31,26 @@ class _SecondPreferenceScreenState extends State<SecondPreferenceScreen> {
   final _heightController = TextEditingController();
   final _weightController = TextEditingController();
   final _desireWeightController = TextEditingController();
+
+  @override
+  void didUpdateWidget(SecondPreferenceScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget != widget) {
+      load();
+    }
+  }
+
+  @override
+  initState() {
+    super.initState();
+    load();
+  }
+
+  load() {
+    _heightController.text = widget.selectedHeight.toString();
+    _weightController.text = widget.selectedWeight.toString();
+    _desireWeightController.text = widget.selectedDesireWeight.toString();
+  }
 
   submit() {
     // * Parse input values

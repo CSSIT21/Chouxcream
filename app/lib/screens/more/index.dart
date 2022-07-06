@@ -79,6 +79,7 @@ class _MoreFragmentState extends State<MoreFragment> {
               children: [
                 CircleAvatar(
                   maxRadius: 40.0,
+                  backgroundColor: Colors.black12,
                   backgroundImage: NetworkImage(user!.avatarUrl),
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 25, horizontal: 12)),
@@ -111,8 +112,13 @@ class _MoreFragmentState extends State<MoreFragment> {
               ],
             ),
           ),
-          const titleBar(title: "Preference Setup", routes: PreferenceScreen()),
-          const titleBar(title: "Help Center", routes: HelpCenter()),
+          TitleBar(
+              title: "Preference Setup",
+              routes: PreferenceScreen(
+                defaultGender: user!.gender,
+                defaultBirthdate: user!.birthdate,
+              )),
+          const TitleBar(title: "Help Center", routes: HelpCenter()),
           InkWell(
             onTap: () {
               showDialog(

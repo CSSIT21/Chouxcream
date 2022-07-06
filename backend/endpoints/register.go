@@ -27,5 +27,6 @@ func Register(router fiber.Router) {
 	tracking.Get("menus", trackingEndpoint.MenuListHandler)
 	tracking.Post("record", trackingEndpoint.AddRecordHandler)
 	tracking.Get("record/recent", trackingEndpoint.RecentRecordHandler)
+	tracking.Get("progress", trackingEndpoint.ProgressGetHandler)
 
 }

@@ -1,64 +1,47 @@
 import 'package:chouxcream_app/classes/theme.dart';
+import 'package:chouxcream_app/models/menu/progress.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class Nutrition extends StatefulWidget {
-  const Nutrition({Key? key}) : super(key: key);
+class Nutrition extends StatelessWidget {
+  final Progress progress;
 
-  @override
-  State<Nutrition> createState() => _NutritionState();
-}
+  const Nutrition({Key? key, required this.progress}) : super(key: key);
 
-class _NutritionState extends State<Nutrition> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0, bottom: 8),
-          child: Text('Calories'),
-        ),
-        LinearPercentIndicator(
-          lineHeight: 10,
-          percent: 0.8,
-          backgroundColor: Colors.black12,
-          progressColor: ThemeConstant.colorPrimary,
-          barRadius: const Radius.circular(15),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
-          child: Text('Carbohydrates'),
-        ),
-        LinearPercentIndicator(
-          lineHeight: 10,
-          percent: 0.6,
-          backgroundColor: Colors.black12,
-          barRadius: const Radius.circular(15),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
-          child: Text('Protein'),
-        ),
-        LinearPercentIndicator(
-          lineHeight: 10,
-          percent: 0.3,
-          backgroundColor: Colors.black12,
-          progressColor: ThemeConstant.colorAccentLight,
-          barRadius: const Radius.circular(15),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
-          child: Text('Fat'),
-        ),
-        LinearPercentIndicator(
-          lineHeight: 10,
-          percent: 0.5,
-          backgroundColor: Colors.black12,
-          progressColor: ThemeConstant.colorAccentDark,
-          barRadius: const Radius.circular(15),
-        ),
+        ...pair("Calories", progress.intakeCalorie, progress.maxCalorie, ThemeConstant.colorPrimary),
+        ...pair("Protein", progress.intakeProtein, progress.maxProtein, ThemeConstant.colorSecondaryDark),
+        ...pair("Carbohydrate", progress.intakeCarbohydrate, progress.maxCarbohydrate, ThemeConstant.colorAccentLight),
+        ...pair("Fat", progress.intakeFat, progress.maxFat, ThemeConstant.colorAccentDark),
       ],
     );
+  }
+
+  List<Widget> pair(String name, double val1, double val2, Color color) {
+    return [
+      Padding(
+        padding: const EdgeInsets.only(left: 8.0, top: 16, bottom: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(name),
+            Text(
+              '${val1.toStringAsFixed(2)} / ${val2.toStringAsFixed(2)} g.',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      LinearPercentIndicator(
+        lineHeight: 10,
+        percent: val1 / val2 > 1 ? 1 : val1 / val2,
+        backgroundColor: Colors.black12,
+        progressColor: color,
+        barRadius: const Radius.circular(15),
+      ),
+    ];
   }
 }

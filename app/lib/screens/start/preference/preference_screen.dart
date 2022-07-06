@@ -3,15 +3,28 @@ import 'package:chouxcream_app/screens/start/preference/second_preference_screen
 import 'package:flutter/material.dart';
 
 class PreferenceScreen extends StatefulWidget {
-  const PreferenceScreen({Key? key}) : super(key: key);
+  final String? defaultGender;
+  final DateTime? defaultBirthdate;
+  final double? defaultHeight;
+  final double? defaultWeight;
+  final double? defaultDesireWeight;
+
+  const PreferenceScreen(
+      {Key? key,
+      this.defaultGender,
+      this.defaultBirthdate,
+      this.defaultHeight,
+      this.defaultWeight,
+      this.defaultDesireWeight})
+      : super(key: key);
 
   @override
   State<PreferenceScreen> createState() => _PreferenceScreenState();
 }
 
 class _PreferenceScreenState extends State<PreferenceScreen> {
-  String _selectedGender = "U";
-  DateTime _selectedBirthDate = DateTime.now();
+  late String _selectedGender;
+  late DateTime _selectedBirthDate;
 
   setSelectedGender(String value) {
     setState(() {
@@ -25,6 +38,25 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
     });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    load();
+  }
+
+  @override
+  void didUpdateWidget(PreferenceScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget != widget) {
+      load();
+    }
+  }
+
+  load() {
+    _selectedGender = widget.defaultGender ?? "M";
+    _selectedBirthDate = widget.defaultBirthdate ?? DateTime.now();
+  }
+
   submit() {
     Navigator.push(
       context,
@@ -32,6 +64,9 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
           builder: (context) => SecondPreferenceScreen(
                 selectedGender: _selectedGender,
                 selectedBirthDate: _selectedBirthDate,
+                selectedHeight: widget.defaultHeight ?? 150,
+                selectedWeight: widget.defaultWeight ?? 50,
+                selectedDesireWeight: widget.defaultDesireWeight ?? 40,
               )),
     );
   }

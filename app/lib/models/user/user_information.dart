@@ -12,8 +12,24 @@ class User {
 
   @JsonKey(name: 'avatar_url')
   final String avatarUrl;
+  
+  @JsonKey(name: "gender")
+  final String gender;
 
-  User({required this.name, required this.email, required this.avatarUrl});
+  @JsonKey(name: "birthdate")
+  final DateTime birthdate;
+
+  @JsonKey(name: "height")
+  final double height;
+
+  @JsonKey(name: "weight")
+  final double weight;
+
+  @JsonKey(name: "desired_wight")
+  final double desiredWight;
+
+  User(this.gender, this.birthdate, this.height, this.weight, this.desiredWight,
+      {required this.name, required this.email, required this.avatarUrl});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

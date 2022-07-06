@@ -1,6 +1,8 @@
 package profile
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
 
@@ -28,8 +30,8 @@ func GetProfileInfoHandler(c *fiber.Ctx) error {
 	claims := c.Locals("user").(*jwt.Token).Claims.(*common.UserClaim)
 
 	// * Get user profile
-	record := new(models.User)
-	if result := mysql.Gorm.Where("id = ?", claims.UserId).First(record); result.Error != nil {
+	user := new(models.User)
+	if result := mysql.Gorm.Where("id = ?", claims.UserId).First(user); result.Error != nil {
 		return &response.GenericError{
 			Message: "Unable to get user profile",
 			Err:     result.Error,
@@ -37,13 +39,27 @@ func GetProfileInfoHandler(c *fiber.Ctx) error {
 	}
 
 	// * Apply default avatar
-	if record.AvatarUrl == nil {
-		record.AvatarUrl = value.Ptr("https://lh3.googleusercontent.com/a-/AOh14GjERdoLShTAHLVlrjX87lm3q1bJZC6luPiIide3Zg")
+	if user.AvatarUrl == nil {
+		user.AvatarUrl = value.Ptr(fmt.Sprintf("https://avatars.dicebear.com/api/adventurer/%s_%s_%d.png", *user.Name, *user.Email, *user.Id))
+	}
+
+	// * Get user preference
+	preference := new(models.Preference)
+	if result := mysql.Gorm.Where("user_id = ?", claims.UserId).First(preference); result.Error != nil {
+		return &response.GenericError{
+			Message: "Unable to get user preference",
+			Err:     result.Error,
+		}
 	}
 
 	return c.JSON(response.NewResponse(&payload.Profile{
-		Name:      record.Name,
-		Email:     record.Email,
-		AvatarUrl: record.AvatarUrl,
+		Name:         user.Name,
+		Email:        user.Email,
+		AvatarUrl:    user.AvatarUrl,
+		Gender:       preference.Gender,
+		Birthdate:    preference.Birthdate,
+		Height:       preference.Height,
+		Weight:       preference.Weight,
+		DesiredWight: preference.TargetWeight,
 	}))
 }

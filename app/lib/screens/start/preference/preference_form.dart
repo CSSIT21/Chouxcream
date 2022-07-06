@@ -80,7 +80,9 @@ class _PreferenceFormState extends State<PreferenceForm> {
                   firstDate: DateTime(1900),
                   lastDate: DateTime.now(),
                 ).then((value) {
-                  widget.setBirthDate(value!);
+                  if (value != null) {
+                    widget.setBirthDate(value);
+                  }
                 });
               },
             ),
