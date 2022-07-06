@@ -6,6 +6,7 @@ import (
 
 	"chouxcream-backend/loaders/mysql"
 	"chouxcream-backend/loaders/mysql/models"
+	"chouxcream-backend/procedures/account"
 	"chouxcream-backend/types/common"
 	"chouxcream-backend/types/payload"
 	"chouxcream-backend/types/response"
@@ -50,10 +51,24 @@ func SetPreferenceHandler(c *fiber.Ctx) error {
 		TargetWeight: body.DesiredWeight,
 	}
 
-	if result := mysql.Gorm.Updates(record); result.Error != nil {
+	if settled, err := account.GetPreferenceSettled(*claims.UserId); err != nil {
 		return &response.GenericError{
-			Message: "Unable to update user preference",
-			Err:     result.Error,
+			Message: "Unable to get preference settled",
+			Err:     err,
+		}
+	} else if *settled {
+		if result := mysql.Gorm.Updates(record); result.Error != nil {
+			return &response.GenericError{
+				Message: "Unable to update user preference",
+				Err:     result.Error,
+			}
+		}
+	} else {
+		if result := mysql.Gorm.Create(record); result.Error != nil {
+			return &response.GenericError{
+				Message: "Unable to create user preference",
+				Err:     result.Error,
+			}
 		}
 	}
 
