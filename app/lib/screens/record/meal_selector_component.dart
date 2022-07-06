@@ -23,7 +23,6 @@ class MealSelectorComponent extends StatelessWidget {
           isScrollable: true,
           labelPadding: const EdgeInsets.symmetric(horizontal: 24),
           indicator: BoxDecoration(color: ThemeConstant.colorPrimary),
-          splashBorderRadius: const BorderRadius.all(Radius.circular(10)),
           labelColor: Colors.white,
           unselectedLabelColor: Colors.black,
           onTap: (index) {

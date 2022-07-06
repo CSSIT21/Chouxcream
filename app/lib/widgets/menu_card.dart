@@ -23,7 +23,12 @@ class MenuCard extends StatelessWidget {
               boxShadow: [BoxShadow(color: Colors.black26, offset: Offset(0, 1), blurRadius: 2.0)]),
           child: Row(
             children: [
-              Image.network(menu.imageUrl, fit: BoxFit.cover, width: 100),
+              Image.network(
+                menu.imageUrl,
+                fit: BoxFit.cover,
+                width: 100,
+                height: 100,
+              ),
               const SizedBox(
                 width: 10,
               ),
@@ -49,7 +54,7 @@ class MenuCard extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(
-                  right: 10,
+                  right: 16,
                 ),
                 width: 36,
                 height: 36,

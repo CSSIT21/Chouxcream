@@ -14,4 +14,6 @@ type Preference struct {
 	Height       *float64     `gorm:"not null"`
 	Weight       *float64     `gorm:"not null"`
 	TargetWeight *float64     `gorm:"not null"`
+	CreatedAt    *time.Time   `gorm:"not null"` // Embedded field
+	UpdatedAt    *time.Time   `gorm:"not null"` // Embedded field
 }

@@ -20,18 +20,18 @@ class _MenuListFragmentState extends State<MenuListFragment> {
   @override
   void initState() {
     super.initState();
-    init();
+    load();
   }
 
   @override
   void didUpdateWidget(MenuListFragment oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.query != widget.query) {
-      init();
+      load();
     }
   }
 
-  init() {
+  load() {
     Caller.dio.get("/tracking/menus?query=${widget.query}").then((response) {
       setState(() {
         menus = response.data["data"].map<Menu>((e) => Menu.fromJson(e)).toList();

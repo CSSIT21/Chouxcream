@@ -10,7 +10,7 @@ class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
       ),
     );
   }

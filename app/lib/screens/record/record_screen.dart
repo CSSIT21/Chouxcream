@@ -5,7 +5,9 @@ import 'package:chouxcream_app/widgets/menu_confirmation.dart';
 import 'package:flutter/material.dart';
 
 class AddRecordScreen extends StatefulWidget {
-  const AddRecordScreen({Key? key}) : super(key: key);
+  final Function onFinish;
+
+  const AddRecordScreen({Key? key, required this.onFinish}) : super(key: key);
 
   @override
   State<AddRecordScreen> createState() => _AddRecordScreenState();
@@ -32,6 +34,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                     _added = true;
                   });
                   Navigator.pop(context);
+                  widget.onFinish();
                 }),
               ),
             ],
@@ -73,13 +76,25 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               children: [
                 MealSelectorComponent(setMeal: setMeal),
                 const SizedBox(height: 20),
-                FloatingActionButton(
-                  child: const Icon(Icons.check),
-                  onPressed: () {
-                    setState(() {
-                      _index = 1;
-                    });
-                  },
+                Container(
+                  margin: const EdgeInsets.only(
+                    right: 10,
+                  ),
+                  width: 48,
+                  height: 48,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: Colors.green,
+                  ),
+                  child: IconButton(
+                      iconSize: 24,
+                      icon: const Icon(
+                        Icons.check,
+                        color: Colors.white,
+                      ),
+                      onPressed: () => setState(() {
+                            _index = 1;
+                          })),
                 ),
               ],
             ),

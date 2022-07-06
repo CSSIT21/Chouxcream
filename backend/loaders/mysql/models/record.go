@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"chouxcream-backend/types/enum"
 )
 
@@ -15,4 +17,6 @@ type Record struct {
 	CustomProtein      *float64   `gorm:"not null"`
 	CustomCarbohydrate *float64   `gorm:"not null"`
 	CustomFat          *float64   `gorm:"not null"`
+	CreatedAt          *time.Time `gorm:"not null"` // Embedded field
+	UpdatedAt          *time.Time `gorm:"not null"` // Embedded field
 }

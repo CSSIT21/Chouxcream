@@ -1,5 +1,5 @@
-import 'package:chouxcream_app/screens/progress/chart.dart';
 import 'package:chouxcream_app/screens/progress/nutrition.dart';
+import 'package:chouxcream_app/screens/progress/progress_chart.dart';
 import 'package:flutter/material.dart';
 
 class ProgressFragment extends StatefulWidget {
@@ -12,39 +12,38 @@ class ProgressFragment extends StatefulWidget {
 class _ProgressFragmentState extends State<ProgressFragment> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Center(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
+    return SingleChildScrollView(
+        child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: const [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 16),
             child: Text(
               'Weekly Progress',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-              child: Column(
-            children: const [
-              // ListTile(
-              //   leading: Icon(Icons.analytics_rounded),
-              //   title: Text("Dashboard"),
-              // ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 16.0, 4.0, 8.0),
-                child: SizedBox(height: 200, child: BarChartWidget()),
+          Card(child: SizedBox(height: 300, child: ProgressChart())),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 16),
+            child: Text(
+              'Daily Intake',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          )),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Nutrition(),
-        )
-      ],
-    );
+            ),
+          ),
+          Nutrition(),
+        ],
+      ),
+    ));
   }
 }

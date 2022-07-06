@@ -1,8 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class BarChartWidget extends StatelessWidget {
-  const BarChartWidget({Key? key}) : super(key: key);
+class ProgressChart extends StatelessWidget {
+  const ProgressChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,16 @@ class BarChartWidget extends StatelessWidget {
         barGroups: barGroups,
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: 20,
+        maxY: 2000,
       ),
     );
   }
 
   BarTouchData get barTouchData => BarTouchData(
-        enabled: false,
+        enabled: true,
         touchTooltipData: BarTouchTooltipData(
-          tooltipBgColor: Colors.transparent,
-          tooltipPadding: const EdgeInsets.all(0),
           tooltipMargin: 8,
+          tooltipBgColor: Colors.transparent,
           getTooltipItem: (
             BarChartGroupData group,
             int groupIndex,
@@ -33,10 +32,7 @@ class BarChartWidget extends StatelessWidget {
           ) {
             return BarTooltipItem(
               rod.toY.round().toString(),
-              const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+              const TextStyle(color: Colors.black26, fontWeight: FontWeight.bold, backgroundColor: Colors.transparent),
             );
           },
         ),
@@ -46,7 +42,7 @@ class BarChartWidget extends StatelessWidget {
     const style = TextStyle(
       color: Color(0xff7589a2),
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 12,
     );
     String text;
     switch (value.toInt()) {
@@ -79,29 +75,15 @@ class BarChartWidget extends StatelessWidget {
   }
 
   Widget rightTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff7589a2),
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    );
-    String text;
-    if (value == 0) {
-      text = 'kCal';
-    } else if (value == 5) {
-      text = '500';
-    } else if (value == 10) {
-      text = '1000';
-    } else if (value == 15) {
-      text = '1500';
-    } else if (value == 20) {
-      text = '2000';
-    } else {
-      return Container();
-    }
     return SideTitleWidget(
       axisSide: meta.axisSide,
-      space: 0,
-      child: Text(text, style: style),
+      space: 2,
+      child: Text(value.toStringAsFixed(0).toString(),
+          style: const TextStyle(
+            color: Color(0xff7589a2),
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          )),
     );
   }
 
@@ -124,7 +106,7 @@ class BarChartWidget extends StatelessWidget {
           sideTitles: SideTitles(
             showTitles: true,
             reservedSize: 40,
-            interval: 1,
+            interval: 500,
             getTitlesWidget: rightTitles,
           ),
         ),
@@ -188,7 +170,7 @@ class BarChartWidget extends StatelessWidget {
           x: 4,
           barRods: [
             BarChartRodData(
-              toY: 13,
+              toY: 1300,
               gradient: _barsGradient,
             )
           ],
@@ -233,7 +215,7 @@ class BarChartSample3State extends State<BarChartSample3> {
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         color: const Color(0xff2c4260),
-        child: const BarChartWidget(),
+        child: const ProgressChart(),
       ),
     );
   }

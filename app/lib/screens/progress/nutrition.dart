@@ -12,74 +12,51 @@ class Nutrition extends StatefulWidget {
 class _NutritionState extends State<Nutrition> {
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('Daily Intake',
-              style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),
-            )
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
+        const Padding(
+          padding: EdgeInsets.only(left: 8.0, bottom: 8),
           child: Text('Calories'),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LinearPercentIndicator(
-            width: _width*0.9,
-            lineHeight: 15.0,
-            percent: 0.8,
-            progressColor: ThemeConstant.colorPrimary,
-            barRadius: Radius.circular(15),
-          ),
+        LinearPercentIndicator(
+          lineHeight: 10,
+          percent: 0.8,
+          backgroundColor: Colors.black12,
+          progressColor: ThemeConstant.colorPrimary,
+          barRadius: const Radius.circular(15),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
+        const Padding(
+          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
           child: Text('Carbohydrates'),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LinearPercentIndicator(
-            width: _width*0.9,
-            lineHeight: 15.0,
-            percent: 0.6,
-            progressColor: ThemeConstant.colorSecondaryLight,
-            barRadius: Radius.circular(15),
-          ),
+        LinearPercentIndicator(
+          lineHeight: 10,
+          percent: 0.6,
+          backgroundColor: Colors.black12,
+          barRadius: const Radius.circular(15),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
-          child: Text('Proteins'),
+        const Padding(
+          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
+          child: Text('Protein'),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LinearPercentIndicator(
-            width: _width*0.9,
-            lineHeight: 15.0,
-            percent: 0.3,
-            progressColor: ThemeConstant.colorAccentLight,
-            barRadius: Radius.circular(15),
-          ),
+        LinearPercentIndicator(
+          lineHeight: 10,
+          percent: 0.3,
+          backgroundColor: Colors.black12,
+          progressColor: ThemeConstant.colorAccentLight,
+          barRadius: const Radius.circular(15),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
-          child: Text('Fats'),
+        const Padding(
+          padding: EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
+          child: Text('Fat'),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LinearPercentIndicator(
-            width: _width*0.9,
-            lineHeight: 15.0,
-            percent: 0.5,
-            progressColor: ThemeConstant.colorAccentDark,
-            barRadius: Radius.circular(15),
-          ),
+        LinearPercentIndicator(
+          lineHeight: 10,
+          percent: 0.5,
+          backgroundColor: Colors.black12,
+          progressColor: ThemeConstant.colorAccentDark,
+          barRadius: const Radius.circular(15),
         ),
       ],
     );

@@ -1,7 +1,7 @@
 package value
 
 func Iterate[A any, B any](a []A, mapper func(a A) (B, error)) ([]B, error) {
-	var result []B
+	result := make([]B, 0)
 	for _, el := range a {
 		mapped, err := mapper(el)
 		if err != nil {

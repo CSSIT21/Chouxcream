@@ -2,7 +2,8 @@ import 'package:chouxcream_app/classes/manifest.dart';
 import 'package:chouxcream_app/classes/theme.dart';
 import 'package:chouxcream_app/screens/more/index.dart';
 import 'package:chouxcream_app/screens/progress/index.dart';
-import 'package:chouxcream_app/screens/today/index.dart';
+import 'package:chouxcream_app/screens/record/record_screen.dart';
+import 'package:chouxcream_app/screens/today/today_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
@@ -15,6 +16,8 @@ class CoreScreen extends StatefulWidget {
 
 class _CoreScreenState extends State<CoreScreen> with TickerProviderStateMixin {
   late TabController _tabController;
+
+  bool reloadChannel = true;
 
   @override
   void initState() {
@@ -69,14 +72,29 @@ class _CoreScreenState extends State<CoreScreen> with TickerProviderStateMixin {
           });
         },
       ),
+      floatingActionButton: _tabController.index == 0
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AddRecordScreen(
+                              onFinish: () => setState(() {
+                                reloadChannel = !reloadChannel;
+                              }),
+                            )));
+              },
+              child: const Icon(Icons.add),
+            )
+          : null,
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         // Swipe navigation handling is not supported
         controller: _tabController,
-        children: const [
-          TodayFragment(),
-          ProgressFragment(),
-          MoreFragment(),
+        children: [
+          TodayScreen(channel: reloadChannel),
+          const ProgressFragment(),
+          const MoreFragment(),
         ],
       ),
     );
